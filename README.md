@@ -1,4 +1,4 @@
 Pacman
 ======
 
-Coplan and Musciano Project
+Coplan, Ackerman, and Musciano Project
