@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// This class will need to be revised and automated, the E drive will be different on separate computers.
 public class InputOutput4Scores {
 
 	public InputOutput4Scores(){
