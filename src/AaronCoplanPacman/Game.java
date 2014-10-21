@@ -23,6 +23,7 @@ public class Game extends JPanel{
 	public static boolean ghostmove = true;
 	
 	public static ArrayList<TestGhost> ghosts = new ArrayList<TestGhost>();
+	//hello
 	
 	public static final int SCALE = 3;
 	public static final int WIDTH = (160 * SCALE);
