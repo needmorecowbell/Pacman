@@ -31,8 +31,9 @@ public class Game extends JPanel{
 	public static int ghost3xvelo = 1;
 	public static int ghost3yvelo = 1;
 	
-	public static final int WIDTH = (160 * 3);
-	public static final int HEIGHT = (160 * 3);
+	public static final int SCALE = 3;
+	public static final int WIDTH = (160 * SCALE);
+	public static final int HEIGHT = (160 * SCALE);
 	
 	public boolean running = false;
 	
