@@ -1,10 +1,12 @@
 package AaronCoplanPacman;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.*;
-import javax.swing.*;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,18 +20,9 @@ public class Game extends JPanel{
 	public HorizontalWalls topwall = new HorizontalWalls(0, 0);
 	public HorizontalWalls bottomwall = new HorizontalWalls(0, ((160 * 3) - 38));
 	
-	static boolean ghostmove = true;
+	public static boolean ghostmove = true;
 	
-	public static TestGhost ghost = new TestGhost(50, 50, Color.blue);
-	public static TestGhost ghost2 = new TestGhost(250, 70, Color.cyan);
-	public static TestGhost ghost3 = new TestGhost(50, 200, Color.white);
-	
-	public static int ghost1xvelo = 1;
-	public static int ghosty1velo = -1;
-	public static int ghost2xvelo = -1;
-	public static int ghost2yvelo = 1;
-	public static int ghost3xvelo = 1;
-	public static int ghost3yvelo = 1;
+	public static ArrayList<TestGhost> ghosts = new ArrayList<TestGhost>();
 	
 	public static final int SCALE = 3;
 	public static final int WIDTH = (160 * SCALE);
@@ -55,9 +48,14 @@ public class Game extends JPanel{
 	
 	public static void main(String[] args) throws Exception{
 		
+		boolean hasCollided= true;
+		
 		//initialWindow menu = new initialWindow();
 		//menu.loadJFrame();
-		
+		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
+		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
+		ghosts.add(new TestGhost(50, 200, Color.white,1,1));
+	
 		
 		Game game = new Game();
 		
@@ -75,7 +73,7 @@ public class Game extends JPanel{
 		frame.setVisible(true);
 		
 		
-		while (ghost.collision(ball) && ghost2.collision(ball) && ghost3.collision(ball)){
+		while (hasCollided){
 		game.move();
 		game.repaint();
 		score++;
@@ -87,9 +85,19 @@ public class Game extends JPanel{
 		//System.out.println("X: " + x + ", Y: " + y);
 		
 		ballcollisions();
-		ghost1collisions(ghost, ghost.getx(), ghost.gety());
-		ghost2collisions(ghost2, ghost2.getx(), ghost2.gety());
-		ghost3collisions(ghost3, ghost3.getx(), ghost3.gety());
+		for(int x=0;x<ghosts.size();x++){
+			ghostcollisions(ghosts.get(x), ghosts.get(x).getx(), ghosts.get(x).gety());
+			
+		}
+		for(int x=0;x<ghosts.size();x++){
+			hasCollided=ghosts.get(x).collision(ball);
+			
+			if(hasCollided==false){break;}
+		}
+		
+		
+		
+
 		
 		
 		
@@ -97,79 +105,32 @@ public class Game extends JPanel{
 		}
 	}
 	
-	public static void ghost1collisions(TestGhost g, int ghostX, int ghostY){
+	public static void ghostcollisions(TestGhost g, int ghostX, int ghostY){
 		
 		if (!((ghostX > 10) && (ghostX < ((160 * 3) - 45)) && (ghostY > 10) && (ghostY < ((160 * 3) - 68)))){
 			if (!(ghostX > 10)){
 				System.out.println("Collision with left wall.");
-				ghost1xvelo = -ghost1xvelo;
+				g.setxvelo(-g.getxvelo());
 				
 			}
 			if (!(ghostX < ((160 * 3) - 45))){
 					System.out.println("Collision with right wall.");
-					ghost1xvelo = -ghost1xvelo;
+					g.setxvelo(-g.getxvelo());
 			
 			}
 			if (!(ghostY > 10)){
 				System.out.println("Collision with top wall.");
-				ghosty1velo = -ghosty1velo;
+				g.setyvelo(-g.getyvelo());
 			}
 			if (!(ghostY < ((160 * 3) - 68))){
 				System.out.println("Collision with bottom wall.");
-				ghosty1velo = -ghosty1velo;
+				g.setyvelo(-g.getyvelo());
 			}
 			
 		}
 	}
+
 	
-public static void ghost2collisions(TestGhost g, int ghostX, int ghostY){
-		
-		if (!((ghostX > 10) && (ghostX < ((160 * 3) - 45)) && (ghostY > 10) && (ghostY < ((160 * 3) - 68)))){
-			if (!(ghostX > 10)){
-				System.out.println("Collision with left wall.");
-				ghost2xvelo = -ghost2xvelo;
-				
-			}
-			if (!(ghostX < ((160 * 3) - 45))){
-					System.out.println("Collision with right wall.");
-					ghost2xvelo = -ghost2xvelo;
-			
-			}
-			if (!(ghostY > 10)){
-				System.out.println("Collision with top wall.");
-				ghost2yvelo = -ghost2yvelo;
-			}
-			if (!(ghostY < ((160 * 3) - 68))){
-				System.out.println("Collision with bottom wall.");
-				ghost2yvelo = -ghost2yvelo;
-			}
-			
-		}
-	}
-public static void ghost3collisions(TestGhost g, int ghostX, int ghostY){
-	
-	if (!((ghostX > 10) && (ghostX < ((160 * 3) - 45)) && (ghostY > 10) && (ghostY < ((160 * 3) - 68)))){
-		if (!(ghostX > 10)){
-			System.out.println("Collision with left wall.");
-			ghost3xvelo = -ghost3xvelo;
-			
-		}
-		if (!(ghostX < ((160 * 3) - 45))){
-				System.out.println("Collision with right wall.");
-				ghost3xvelo = -ghost3xvelo;
-		
-		}
-		if (!(ghostY > 10)){
-			System.out.println("Collision with top wall.");
-			ghost3yvelo = -ghost3yvelo;
-		}
-		if (!(ghostY < ((160 * 3) - 68))){
-			System.out.println("Collision with bottom wall.");
-			ghost3yvelo = -ghost3yvelo;
-		}
-		
-	}
-}
 	
 	public static void ballcollisions(){
 		
@@ -227,18 +188,20 @@ public static void ghost3collisions(TestGhost g, int ghostX, int ghostY){
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
 		bottomwall.paint(g2d);
-		ghost.paint(g2d);
-		ghost2.paint(g2d);
-		ghost3.paint(g2d);
+		
+		for(int x=0;x<ghosts.size();x++){
+			ghosts.get(x).paint(g2d);
+		}
+
 	}
 
 
 	private void move(){
 		
 		ball.move(direction, movelrud);
-		ghost.move(ghostmove, ghost1xvelo, ghosty1velo);
-		ghost2.move(ghostmove, ghost2xvelo, ghost2yvelo);
-		ghost3.move(ghostmove, ghost3xvelo, ghost3yvelo);
+		for(int x=0;x<ghosts.size();x++){
+			ghosts.get(x).move(ghostmove,ghosts.get(x).getxvelo(),ghosts.get(x).getyvelo());
+		}
 	}
 	
 	public void KeyPressed(KeyEvent k)

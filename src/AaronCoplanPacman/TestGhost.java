@@ -12,13 +12,17 @@ public class TestGhost {
 	int width = 30;
 	int height = 30;
 	Color c;
+	int xvelo=1;
+	int yvelo=1;
 	
 	
-	public TestGhost(int x, int y, Color c){
+	public TestGhost(int x, int y, Color c, int xvelo, int yvelo){
 		
 		this.x = x;
 		this.y = y;
 		this.c = c;
+		this.xvelo=xvelo;
+		this.yvelo=yvelo;
 	}
 	
 	public void paint (Graphics g){
@@ -55,15 +59,12 @@ public class TestGhost {
 		}
 	}
 	
-	public int getx(){
-		
-		return x;
-	}
-	
-	public int gety(){
-		
-		return y;
-	}
+	public int getxvelo(){return xvelo;}
+	public int getyvelo(){return yvelo;}
+	public int getx(){return x;}	
+	public int gety(){return y;}
+	public void setxvelo(int xvelo){this.xvelo=xvelo;}
+	public void setyvelo(int yvelo){this.yvelo=yvelo;}
 	
 	  public boolean collision(BallTest r)
 	    {
