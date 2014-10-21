@@ -22,7 +22,7 @@ public class TestGhost {
 	}
 	
 	public void paint (Graphics g){
-		
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(c);
 		g.fillOval(x, y, width, height);
 	}
