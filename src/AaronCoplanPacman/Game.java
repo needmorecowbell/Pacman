@@ -54,8 +54,8 @@ public class Game extends JPanel{
 	
 	public static void main(String[] args) throws Exception{
 		
-		initialWindow menu = new initialWindow();
-		menu.loadJFrame();
+		//initialWindow menu = new initialWindow();
+		//menu.loadJFrame();
 		
 		
 		Game game = new Game();
