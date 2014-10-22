@@ -6,7 +6,8 @@ import java.awt.Graphics;
 public class BenignGhost extends TestGhost {
 
 	int x,y;
-	int width,height;
+	int width=30;
+	int height=30;
 	Color c;
 	int xvelo,yvelo;
 	int  speed=2;
