@@ -36,7 +36,7 @@ public class Pill {
 	}
 	
 
-	public boolean collision(BallTest r){
+	public boolean pillEaten(BallTest r){
         double distance = Math.sqrt(((this.getx() - r.getx()) * (this.getx() - r.getx()))+ ((this.gety() - r.gety()) * (this.gety() - r.gety())));
      
         if (distance <= (this.height / 2) + (r.height / 2))

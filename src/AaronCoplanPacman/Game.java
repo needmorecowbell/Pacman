@@ -23,6 +23,7 @@ public class Game extends JPanel{
 	
 	public static boolean ghostmove = true;
 	public static ArrayList<TestGhost> ghosts = new ArrayList<TestGhost>();
+	public static ArrayList<Pill> pills = new ArrayList<Pill>();
 	
 
 	public static final int WIDTH = (160 * SCALE);
@@ -35,7 +36,7 @@ public class Game extends JPanel{
 	public static int score = 0;
 	public static final String NAME = "Pacman";
 	
-	Pill pill = new Pill(125, 125);
+	static Pill pill1 = new Pill(125, 125);
 	
 	
 	public Game(){
@@ -59,6 +60,7 @@ public class Game extends JPanel{
 		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
 		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
 		ghosts.add(new TestGhost(50, 200, Color.white,1,1));
+		pills.add(pill1);
 	
 		
 		Game game = new Game();		
@@ -97,6 +99,12 @@ public class Game extends JPanel{
 				hasNotCollided=ghosts.get(x).collision(ball);		
 				if(hasNotCollided==false){break;}
 			}		
+			
+			for (int x=0; x<pills.size();x++){
+				if(pills.get(x).pillEaten(ball) == false){
+					pills.remove(x);
+				}
+			}
 		
 		}
 	}
@@ -161,7 +169,9 @@ public class Game extends JPanel{
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
 		bottomwall.paint(g2d);
-		pill.paint(g2d);
+		
+	
+		for(int x=0; x<pills.size();x++){pills.get(x).paint(g2d);}
 		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
 
 	}
