@@ -1,9 +1,9 @@
 package AaronCoplanPacman;
 
+import java.awt.Color;
+import java.awt.Graphics;
 
-import java.awt.*;
-
-public class TestGhost {
+public class BenignGhost extends TestGhost {
 
 	int x,y;
 	int width,height;
@@ -11,8 +11,9 @@ public class TestGhost {
 	int xvelo,yvelo;
 	int  speed=2;
 	
-	public TestGhost(){}
-	public TestGhost(int x, int y, Color c, int xvelo, int yvelo){
+	public BenignGhost(){}
+	
+	public BenignGhost(int x, int y, Color c, int xvelo, int yvelo){
 		
 		this.x = x;
 		this.y = y;
@@ -21,7 +22,7 @@ public class TestGhost {
 		this.yvelo=yvelo;
 	}
 	
-	public TestGhost(int x, int y, Color c, int xvelo, int yvelo,int speed){
+	public BenignGhost(int x, int y, Color c, int xvelo, int yvelo,int speed){
 		
 		this.x = x;
 		this.y = y;
@@ -30,6 +31,7 @@ public class TestGhost {
 		this.yvelo=yvelo;
 		this.speed=speed;
 	}
+
 	
 	public void paint (Graphics g){
 		//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -38,38 +40,8 @@ public class TestGhost {
 	}
 	
 	public void move(boolean moving, int xplusminus, int yplusminus){
-		if (moving == true){
-			
-			switch (xplusminus){
-			case 1: 
-				switch(yplusminus){
-					case 1:
-						x+=speed;
-						y-=speed;
-						break;
-					case -1: 
-						x+=speed;
-						y+=speed;
-						break;
-				}
-				break;
-			case -1: 
-				switch(yplusminus){
-					case 1: 
-						x-=speed;
-						y-=speed;
-						break;
-					case -1: 
-						x-=speed;
-						y+=speed;
-						break;
-				}
-				break;
-			}
-			
-		}
+		super.move(moving, xplusminus, yplusminus);	
 	}
-	
 	public int getxvelo(){return xvelo;}
 	public int getyvelo(){return yvelo;}
 	public int getx(){return x;}	
@@ -82,6 +54,7 @@ public class TestGhost {
 	     
 	        if (distance <= (this.height / 2) + (r.height / 2)){
 	            //balls have collided
+	        	//this.move(true, xvelo, yvelo);
 	        	System.out.println("Collision!!!!");
 	            return false;
 	        }else{
@@ -89,3 +62,4 @@ public class TestGhost {
 	         }
 	    }
 }
+

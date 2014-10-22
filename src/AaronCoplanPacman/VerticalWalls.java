@@ -1,6 +1,5 @@
 package AaronCoplanPacman;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class VerticalWalls {

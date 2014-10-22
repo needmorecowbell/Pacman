@@ -54,9 +54,9 @@ public class Game extends JPanel{
 	public static void start(){
 		boolean hasNotCollided= true;
 		
-		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
-		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
-		ghosts.add(new TestGhost(50, 200, Color.white,1,1));
+		ghosts.add(new BenignGhost(50,50, Color.blue,1,-1));
+		//ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
+		//ghosts.add(new TestGhost(50, 200, Color.white,1,1));
 	
 		
 		Game game = new Game();		
@@ -152,17 +152,14 @@ public class Game extends JPanel{
 		
 		super.paint(g);
 		Graphics g2d = (Graphics2D)g;
-		g2d.setColor(Color.red);
+		g2d.setColor(Color.gray);
 		g2d.fillRect(0, 0, (160 * SCALE), (160 * SCALE));
 		ball.paint(g2d);
 		leftwall.paint(g2d);
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
-		bottomwall.paint(g2d);
-		
-		for(int x=0;x<ghosts.size();x++){
-			ghosts.get(x).paint(g2d);
-		}
+		bottomwall.paint(g2d);	
+		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
 
 	}
 
@@ -172,6 +169,7 @@ public class Game extends JPanel{
 		for(int x=0;x<ghosts.size();x++){
 			ghosts.get(x).move(ghostmove,ghosts.get(x).getxvelo(),ghosts.get(x).getyvelo());
 		}
+		
 	}
 	
 	public void KeyPressed(KeyEvent k)
