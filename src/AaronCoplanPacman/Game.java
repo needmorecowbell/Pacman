@@ -103,6 +103,7 @@ public class Game extends JPanel{
 			for (int x=0; x<pills.size();x++){
 				if(pills.get(x).pillEaten(ball) == false){
 					pills.remove(x);
+					//switch ghosts into benign ones
 				}
 			}
 		
