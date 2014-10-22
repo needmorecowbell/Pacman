@@ -54,9 +54,9 @@ public class Game extends JPanel{
 	public static void start(){
 		boolean hasNotCollided= true;
 		
-		ghosts.add(new BenignGhost(50,50, Color.blue,1,-1));
-		//ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
-		//ghosts.add(new TestGhost(50, 200, Color.white,1,1));
+		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
+		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
+		ghosts.add(new TestGhost(50, 200, Color.white,1,1));
 	
 		
 		Game game = new Game();		
