@@ -160,7 +160,8 @@ public class Game extends JPanel{
 		leftwall.paint(g2d);
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
-		bottomwall.paint(g2d);	
+		bottomwall.paint(g2d);
+		pill.paint(g2d);
 		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
 
 	}
