@@ -35,6 +35,8 @@ public class Game extends JPanel{
 	public static int score = 0;
 	public static final String NAME = "Pacman";
 	
+	Pill pill = new Pill(125, 125);
+	
 	
 	public Game(){
 		addKeyListener(new KeyListener() {

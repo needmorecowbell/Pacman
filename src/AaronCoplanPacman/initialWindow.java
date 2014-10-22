@@ -67,7 +67,6 @@ public class initialWindow {
 			
 			menuframe.setVisible(false);
 			open = false;
-			Game.start();
 			
 		}
 		
