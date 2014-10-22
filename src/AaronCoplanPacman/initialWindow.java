@@ -21,6 +21,7 @@ public class initialWindow {
 	
 	public void loadJFrame() throws IOException{
 		
+		open = true;
 		menuframe.setTitle("Welcome to Pacman");
 		menuframe.setResizable(false);
 		menuframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,6 +59,8 @@ public class initialWindow {
 			
 			
 		}
+		
+		Game.start();
 		
 	}
 	

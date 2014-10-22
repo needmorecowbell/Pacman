@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -35,6 +36,7 @@ public class Game extends JPanel{
 	public static JFrame frame = new JFrame();
 	public static int score = 0;
 	public static final String NAME = "Pacman";
+	public static boolean hasnotcollided = true;
 	
 	static Pill pill1 = new Pill(125, 125);
 	
@@ -55,7 +57,7 @@ public class Game extends JPanel{
 	
 	
 	public static void start(){
-		boolean hasNotCollided= true;
+		hasnotcollided= true;
 		
 		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
 		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
@@ -75,11 +77,13 @@ public class Game extends JPanel{
 		frame.setVisible(true);
 
 		
-		while (hasNotCollided){
+		while (hasnotcollided){
 
 			game.move();
 			game.repaint();
+			if(ghostmove){
 			score++;
+			}
 			frame.setTitle(NAME + ": " + score);
 			try {
 				Thread.sleep(10);
@@ -96,8 +100,8 @@ public class Game extends JPanel{
 			
 			}
 			for(int x=0;x<ghosts.size();x++){
-				hasNotCollided=ghosts.get(x).collision(ball);		
-				if(hasNotCollided==false){break;}
+				hasnotcollided=ghosts.get(x).collision(ball);		
+				if(hasnotcollided==false){break;}
 			}		
 			
 			for (int x=0; x<pills.size();x++){
@@ -186,7 +190,7 @@ public class Game extends JPanel{
 		
 	}
 	
-	public void KeyPressed(KeyEvent k)
+	public void KeyPressed(KeyEvent k) 
     {
         if(k.getKeyCode()==KeyEvent.VK_LEFT){
             direction = 'x';

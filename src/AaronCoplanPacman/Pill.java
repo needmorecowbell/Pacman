@@ -42,7 +42,7 @@ public class Pill {
         if (distance <= (this.height / 2) + (r.height / 2))
         {
             //balls have collided
-        	System.out.println("Collision!!!!");
+        	System.out.println("Collision with pill!");
             return false;
         }
         else
