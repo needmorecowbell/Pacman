@@ -5,10 +5,10 @@ public class Player {
 	private String name;
 	private int score;
 	
-	public Player(String NAME, int SCORE){
+	public Player(String name, int score){
 		
-		name = NAME;
-		score = SCORE;
+		this.name = name;
+		this.score = score;
 	}
 	
 	public String getName(){

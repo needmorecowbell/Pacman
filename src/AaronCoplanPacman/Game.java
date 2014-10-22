@@ -13,94 +13,88 @@ import javax.swing.JPanel;
 public class Game extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
+	public static final int SCALE = 3;	
 	
 	public static BallTest ball = new BallTest();
 	public VerticalWalls leftwall = new VerticalWalls(0, 0);
-	public VerticalWalls rightwall = new VerticalWalls(((160 * 3) - 15), 0);
+	public VerticalWalls rightwall = new VerticalWalls(((160 * SCALE) - 15), 0);
 	public HorizontalWalls topwall = new HorizontalWalls(0, 0);
-	public HorizontalWalls bottomwall = new HorizontalWalls(0, ((160 * 3) - 38));
+	public HorizontalWalls bottomwall = new HorizontalWalls(0, ((160 * SCALE) - 38));
 	
 	public static boolean ghostmove = true;
-	
 	public static ArrayList<TestGhost> ghosts = new ArrayList<TestGhost>();
 	
-	public static final int SCALE = 3;
+
 	public static final int WIDTH = (160 * SCALE);
 	public static final int HEIGHT = (160 * SCALE);
-	
 	public boolean running = false;
-	
-	static int ballx = 100;
-	static int bally = 100;
-	
-	static int ghost1x = 100, ghost1y = 100;
-	static int ghost2x = 100, ghost2y = 100;
-	static int ghost3x = 100, ghost3y = 100;
-	
+	static int ballx,bally;
 	public int movelrud = 0;
 	public static char direction = 0;
-	
 	public static JFrame frame = new JFrame();
 	public static int score = 0;
-	
 	public static final String NAME = "Pacman";
 	
 	
-	public static void main(String[] args) throws Exception{
+	public Game(){
+		addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                 KeyPressed(e);
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        setFocusable(true);  
+	}
+	
+	
+	public static void start(){
+		boolean hasNotCollided= true;
 		
-		boolean hasCollided= true;
-		
-		//initialWindow menu = new initialWindow();
-		//menu.loadJFrame();
 		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
 		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
 		ghosts.add(new TestGhost(50, 200, Color.white,1,1));
 	
 		
-		Game game = new Game();
-		
-		
+		Game game = new Game();		
 		
 		frame = new JFrame(NAME);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		frame.add(game);
-		frame.pack();
-		
+		frame.pack();	
 		frame.setSize(WIDTH, HEIGHT);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		
-		
-		while (hasCollided){
-		game.move();
-		game.repaint();
-		score++;
-		frame.setTitle(NAME + ": " + score);
-		Thread.sleep(10);
-		ballx = ball.getx();
-		bally = ball.gety();
-		
-		//System.out.println("X: " + x + ", Y: " + y);
-		
-		ballcollisions();
-		for(int x=0;x<ghosts.size();x++){
-			ghostcollisions(ghosts.get(x), ghosts.get(x).getx(), ghosts.get(x).gety());
-			
-		}
-		for(int x=0;x<ghosts.size();x++){
-			hasCollided=ghosts.get(x).collision(ball);
-			
-			if(hasCollided==false){break;}
-		}
-		
-		
-		
 
 		
+		while (hasNotCollided){
+
+			game.move();
+			game.repaint();
+			score++;
+			frame.setTitle(NAME + ": " + score);
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			ballx = ball.getx();
+			bally = ball.gety();
 		
 		
+			ballcollisions();
+			for(int x=0;x<ghosts.size();x++){
+				ghostcollisions(ghosts.get(x), ghosts.get(x).getx(), ghosts.get(x).gety());
+			
+			}
+			for(int x=0;x<ghosts.size();x++){
+				hasNotCollided=ghosts.get(x).collision(ball);		
+				if(hasNotCollided==false){break;}
+			}		
 		
 		}
 	}
@@ -130,8 +124,6 @@ public class Game extends JPanel{
 		}
 	}
 
-	
-	
 	public static void ballcollisions(){
 		
 		if (!((ballx > 10) && (ballx < ((160 * 3) - 45)) && (bally > 10) && (bally < ((160 * 3) - 68))))
@@ -154,35 +146,14 @@ public class Game extends JPanel{
 			ball.movebally(-1);
 		}
 	}
-	
-	public Game(){
 		
-		addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            	
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                 KeyPressed(e);
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                
-            }
-        });
-        setFocusable(true);
-        
-	}
 	@Override
 	public void paint(Graphics g){
 		
 		super.paint(g);
 		Graphics g2d = (Graphics2D)g;
 		g2d.setColor(Color.red);
-		g2d.fillRect(0, 0, (160 * 3), (160 * 3));
+		g2d.fillRect(0, 0, (160 * SCALE), (160 * SCALE));
 		ball.paint(g2d);
 		leftwall.paint(g2d);
 		rightwall.paint(g2d);
@@ -194,7 +165,6 @@ public class Game extends JPanel{
 		}
 
 	}
-
 
 	private void move(){
 		

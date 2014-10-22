@@ -1,20 +1,19 @@
 package AaronCoplanPacman;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class HorizontalWalls {
 
-	int width = (160 * 3);
+	int width = (160 * Game.SCALE);
 	int height = 10;
 	int x = 0;
 	int y = 0;
 	
 	
-	public HorizontalWalls(int X, int Y){
+	public HorizontalWalls(int x, int y){
 		
-		x = X;
-		y = Y;
+		this.x = x;
+		this.y = y;
 	}
 	
 	public void paint(Graphics g){

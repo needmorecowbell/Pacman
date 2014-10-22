@@ -17,10 +17,7 @@ public class initialWindow {
 	 boolean open = true;
 	
 
-
-	public initialWindow(){
-		
-	}
+	public initialWindow(){}
 	
 	public void loadJFrame() throws IOException{
 		
@@ -70,6 +67,7 @@ public class initialWindow {
 			
 			menuframe.setVisible(false);
 			open = false;
+			Game.start();
 			
 		}
 		

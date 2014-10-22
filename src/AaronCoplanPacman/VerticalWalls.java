@@ -6,15 +6,15 @@ import java.awt.*;
 public class VerticalWalls {
 
 	int width = 10;
-	int height = (160 * 3);
+	int height = (160 * Game.SCALE);
 	int x = 0;
 	int y = 0;
 	
 	
-	public VerticalWalls(int X, int Y){
+	public VerticalWalls(int x, int y){
 		
-		x = X;
-		y = Y;
+		this.x = x;
+		this.y = y;
 	}
 	
 	public void paint(Graphics g){

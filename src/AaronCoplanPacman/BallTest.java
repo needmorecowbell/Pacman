@@ -10,10 +10,7 @@ public class BallTest {
 	int x = ((160 * 3) / 2) - 30;
 	int y = ((160 * 3) / 2) - 30;
 	
-	public BallTest(){
-		
-		
-	}
+	public BallTest(){}
 	
 	public void paint(Graphics g){
 		//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

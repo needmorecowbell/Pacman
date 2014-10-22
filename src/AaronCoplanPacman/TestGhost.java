@@ -3,17 +3,13 @@ package AaronCoplanPacman;
 
 import java.awt.*;
 
-import javax.swing.*;
-
 public class TestGhost {
 
-	int x = 30;
-	int y = 30;
-	int width = 30;
-	int height = 30;
+	int x,y;
+	int width,height;
 	Color c;
-	int xvelo=1;
-	int yvelo=1;
+	int xvelo,yvelo;
+	int  speed=2;
 	
 	
 	public TestGhost(int x, int y, Color c, int xvelo, int yvelo){
@@ -25,6 +21,16 @@ public class TestGhost {
 		this.yvelo=yvelo;
 	}
 	
+	public TestGhost(int x, int y, Color c, int xvelo, int yvelo,int speed){
+		
+		this.x = x;
+		this.y = y;
+		this.c = c;
+		this.xvelo=xvelo;
+		this.yvelo=yvelo;
+		this.speed=speed;
+	}
+	
 	public void paint (Graphics g){
 		//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(c);
@@ -34,25 +40,30 @@ public class TestGhost {
 	public void move(boolean moving, int xplusminus, int yplusminus){
 		if (moving == true){
 			
-			switch (xplusminus)
-			{
-			case 1: switch(yplusminus){
-			case 1: x+=2;
-			y-=2;
+			switch (xplusminus){
+			case 1: 
+				switch(yplusminus){
+					case 1:
+						x+=speed;
+						y-=speed;
+						break;
+					case -1: 
+						x+=speed;
+						y+=speed;
+						break;
+				}
 				break;
-			case -1: x+=2;
-			y+=2;
-				break;
-			}
-				break;
-			case -1: switch(yplusminus){
-			case 1: x-=2;
-			y-=2;
-				break;
-			case -1: x-=2;
-			y+=2;
-				break;
-			}
+			case -1: 
+				switch(yplusminus){
+					case 1: 
+						x-=speed;
+						y-=speed;
+						break;
+					case -1: 
+						x-=speed;
+						y+=speed;
+						break;
+				}
 				break;
 			}
 			
@@ -66,18 +77,15 @@ public class TestGhost {
 	public void setxvelo(int xvelo){this.xvelo=xvelo;}
 	public void setyvelo(int yvelo){this.yvelo=yvelo;}
 	
-	  public boolean collision(BallTest r)
-	    {
+	  public boolean collision(BallTest r){
 	        double distance = Math.sqrt(((this.getx() - r.getx()) * (this.getx() - r.getx()))+ ((this.gety() - r.gety()) * (this.gety() - r.gety())));
 	     
-	        if (distance <= (this.height / 2) + (r.height / 2))
-	        {
+	        if (distance <= (this.height / 2) + (r.height / 2)){
 	            //balls have collided
 	        	System.out.println("Collision!!!!");
 	            return false;
-	        }
-	        else
+	        }else{
 	            return true;
-
+	         }
 	    }
 }
