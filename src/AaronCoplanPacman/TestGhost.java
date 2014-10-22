@@ -1,6 +1,6 @@
 package AaronCoplanPacman;
 
-//testing
+//Adam Musciano Test
 import java.awt.*;
 
 public class TestGhost {
