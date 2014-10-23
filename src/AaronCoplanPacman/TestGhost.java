@@ -107,7 +107,12 @@ public class TestGhost {
 	        	 if (distance <= (a.height / 2) + (r.height / 2)){
 	 	            //balls have collided
 	 	        	System.out.println("Collision!!!!");
+	 	        	try{
 	 	        	Game.ghosts.remove(a);
+	 	        	}
+	 	        	catch (IndexOutOfBoundsException e){
+	 	        		System.out.println("Index out of bounds error");
+	 	        	}
 	 	            return true;
 	        	
 	        	}
