@@ -56,12 +56,12 @@ public class initialWindow {
 		menuframe.setVisible(true);
 		
 		while(open){
-			
+			//System.out.println("open");
 			
 		}
-		
+		//System.out.println("closed");
 		Game.start();
-		
+	
 	}
 	
 	private class playGame implements ActionListener{
@@ -70,6 +70,7 @@ public class initialWindow {
 			
 			menuframe.setVisible(false);
 			open = false;
+			System.out.println("hit first method");
 			
 		}
 		
