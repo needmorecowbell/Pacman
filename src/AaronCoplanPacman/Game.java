@@ -63,8 +63,10 @@ public class Game extends JPanel{
 		ghosts.add(new TestGhost("Aaron", 250, 70, Color.cyan,-1,1));
 		ghosts.add(new TestGhost("Adam Ack", 50, 200, Color.white,1,1));
 		ghosts.add(new TestGhost("Eugene Crabs", 250, 250, Color.green, -1, -1));
-		pills.add(new Pill(125, 125));
-		pills.add(new Pill(50, 60));
+		pills.add(new Pill(30, 410));
+		pills.add(new Pill(30, 30));
+		pills.add(new Pill(420, 30));
+		pills.add(new Pill(420, 410));
 	
 		
 		Game game = new Game();		
@@ -97,61 +99,48 @@ public class Game extends JPanel{
 		
 		
 			ballcollisions();
-			try{
+			
 			for(int x=0;x<ghosts.size();x++){
 				ghostcollisions(ghosts.get(x), ghosts.get(x).getx(), ghosts.get(x).gety());
 			
 			}
-			}
-			catch (IndexOutOfBoundsException e){
-				System.out.println("Index out of bounds");
-			}
-			try{
+			
+			
+			
 			for(int x=0;x<ghosts.size();x++){
 				hasnotcollided=ghosts.get(x).collision(ball, ghosts.get(x));		
 				if(hasnotcollided==false){break;}
 			}	
-			}
-			catch(IndexOutOfBoundsException a){
-				System.out.println("Index out of bounds");
-			}
-			try{
+			
+			
+			
 			for (int x=0; x<pills.size();x++){
 				if(pills.get(x).pillEaten(ball) == false){
 					
 					pills.remove(x);
 					benignmodetimer = 2;
-					try{
+					
 					for(int X = 0; X < ghosts.size(); X++){
 						ghosts.get(X).setBenignMode(true);
 					}
-					}
-					catch(IndexOutOfBoundsException z){
-						System.out.println("Index out of bounds");
-					}
+					
 				}
 			}
-			}
-			catch(IndexOutOfBoundsException f){
-				System.out.println("Index out of bounds");
-			}
+			
 			try{
 			if (ghosts.get(0).getBenignMode()){
 			benignmodetimer++;
 			}
 			}
 			catch(IndexOutOfBoundsException e){
-				System.out.println("Adam sucks(which one?)");
+				
 			}
 			if(benignmodetimer >= 500){
-				try{
+			
 				for (int x = 0; x<ghosts.size(); x++){
 					ghosts.get(x).setBenignMode(false);
 				}
-				}
-				catch(IndexOutOfBoundsException i){
-					System.out.println("Index out of bounds");
-				}
+				
 				
 
 			}
