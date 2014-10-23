@@ -39,7 +39,6 @@ public class Game extends JPanel{
 	public static final String NAME = "Pacman";
 	public static boolean hasnotcollided = true;
 	
-	static Pill pill1 = new Pill(125, 125);
 	
 	
 	public Game(){
@@ -60,11 +59,12 @@ public class Game extends JPanel{
 	public static void start(){
 		hasnotcollided= true;
 		
-		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
-		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
-		ghosts.add(new TestGhost(50, 200, Color.white,1,1));
-		ghosts.add(new TestGhost(250, 250, Color.green, -1, -1));
-		pills.add(pill1);
+		ghosts.add(new TestGhost("Adam M", 50,50, Color.pink,1,-1));
+		ghosts.add(new TestGhost("Aaron", 250, 70, Color.cyan,-1,1));
+		ghosts.add(new TestGhost("Adam Ack", 50, 200, Color.white,1,1));
+		ghosts.add(new TestGhost("Eugene Crabs", 250, 250, Color.green, -1, -1));
+		pills.add(new Pill(125, 125));
+		pills.add(new Pill(50, 60));
 	
 		
 		Game game = new Game();		
@@ -102,13 +102,15 @@ public class Game extends JPanel{
 			
 			}
 			for(int x=0;x<ghosts.size();x++){
-				hasnotcollided=ghosts.get(x).collision(ball);		
+				hasnotcollided=ghosts.get(x).collision(ball, ghosts.get(x));		
 				if(hasnotcollided==false){break;}
 			}		
-			
 			for (int x=0; x<pills.size();x++){
 				if(pills.get(x).pillEaten(ball) == false){
+					
 					pills.remove(x);
+					benignmodetimer = 2;
+					
 					for(int X = 0; X < ghosts.size(); X++){
 						ghosts.get(X).setBenignMode(true);
 					}
@@ -121,7 +123,10 @@ public class Game extends JPanel{
 				for (int x = 0; x<ghosts.size(); x++){
 					ghosts.get(x).setBenignMode(false);
 				}
+				
+
 			}
+			
 		}
 	}
 	
