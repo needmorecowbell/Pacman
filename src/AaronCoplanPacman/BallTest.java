@@ -13,7 +13,6 @@ public class BallTest {
 	public BallTest(){}
 	
 	public void paint(Graphics g){
-		//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.orange);
 		g.fillOval(x, y, width, height);
 	}
