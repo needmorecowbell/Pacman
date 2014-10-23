@@ -24,6 +24,7 @@ public class Game extends JPanel{
 	
 	public static boolean ghostmove = true;
 	public static ArrayList<TestGhost> ghosts = new ArrayList<TestGhost>();
+	public static ArrayList<TestGhost> deadghosts = new ArrayList<TestGhost>();
 	public static ArrayList<Pill> pills = new ArrayList<Pill>();
 	
 
@@ -115,7 +116,7 @@ public class Game extends JPanel{
 				if(pills.get(x).pillEaten(ball) == false){
 					score += 50;
 					pills.remove(x);
-					benignmodetimer = 2;
+					benignmodetimer = 0;
 					
 					for(int X = 0; X < ghosts.size(); X++){
 						ghosts.get(X).setBenignMode(true);
@@ -124,22 +125,34 @@ public class Game extends JPanel{
 				}
 			}
 			
-			try{
-			if (ghosts.get(0).getBenignMode()){
+			if (ghosts.size() == 0){
+				if(deadghosts.get(0).getBenignMode()){
+					benignmodetimer++;
+				}
+			}
+			
+			else{	
+			try{	
+			if (ghosts.get(0).getBenignMode() || deadghosts.get(0).getBenignMode()){
 			benignmodetimer++;
 			}
 			}
-			catch(IndexOutOfBoundsException e){
+			catch (IndexOutOfBoundsException e){
 				
 			}
+			
+		}
 			if(benignmodetimer >= 500){
 			
 				for (int x = 0; x<ghosts.size(); x++){
 					ghosts.get(x).setBenignMode(false);
 				}
 				
-				
-
+				for(int x=0; x<deadghosts.size(); x++){
+					
+					ghosts.add(deadghosts.get(x));
+				}
+				deadghosts.clear();
 			}
 			
 		}

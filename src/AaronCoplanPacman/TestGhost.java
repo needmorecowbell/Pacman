@@ -118,6 +118,7 @@ public class TestGhost {
 	 	        	System.out.println("Collision!!!!");
 	 	        	try{
 	 	        	Game.score += 100;	
+	 	        	Game.deadghosts.add(a);
 	 	        	Game.ghosts.remove(a);
 	 	        	}
 	 	        	catch (IndexOutOfBoundsException e){
