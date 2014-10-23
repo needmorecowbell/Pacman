@@ -7,7 +7,8 @@ public class TestGhost {
 	int x,y;
 	int width=30;
 	int height=30;
-	Color c,temp;
+	Color c;
+	final Color temp;
 	int xvelo,yvelo;
 	int  speed=2;
 	boolean benignmode = false;
@@ -21,6 +22,7 @@ public class TestGhost {
 		this.c = c;
 		this.xvelo=xvelo;
 		this.yvelo=yvelo;
+		this.temp = c;
 	}
 	
 	public TestGhost(int x, int y, Color c, int xvelo, int yvelo,int speed){
@@ -31,6 +33,7 @@ public class TestGhost {
 		this.xvelo=xvelo;
 		this.yvelo=yvelo;
 		this.speed=speed;
+		this.temp = c;
 	}
 	
 	public void setBenignMode(boolean benignmode){
@@ -38,7 +41,6 @@ public class TestGhost {
 		this.benignmode = benignmode;
 		
 		if(benignmode){
-			temp= c;
 			c = Color.blue;
 		}
 		else{
@@ -60,7 +62,12 @@ public class TestGhost {
 	public void move(boolean moving, int xplusminus, int yplusminus){
 		
 		 if (moving == true){
-			
+			if(benignmode){
+				speed = 1;
+			}
+			else{
+				speed = 2;
+			}
 			switch (xplusminus){
 			case 1: 
 				switch(yplusminus){
@@ -87,6 +94,8 @@ public class TestGhost {
 				}
 				break;
 			}
+			
+			
 			
 		}
 	}
