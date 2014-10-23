@@ -85,9 +85,6 @@ public class Game extends JPanel{
 
 			game.move();
 			game.repaint();
-			if(ghostmove){
-			score++;
-			}
 			frame.setTitle(NAME + ": " + score);
 			try {
 				Thread.sleep(10);
@@ -116,7 +113,7 @@ public class Game extends JPanel{
 			
 			for (int x=0; x<pills.size();x++){
 				if(pills.get(x).pillEaten(ball) == false){
-					
+					score += 50;
 					pills.remove(x);
 					benignmodetimer = 2;
 					
