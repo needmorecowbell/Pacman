@@ -7,11 +7,11 @@ public class TestGhost {
 	int x,y;
 	int width=30;
 	int height=30;
-	Color c;
+	Color c,temp;
 	int xvelo,yvelo;
 	int  speed=2;
+	boolean benignmode = false;
 	
-	public TestGhost(){}
 	public TestGhost(int x, int y, Color c, int xvelo, int yvelo){
 		
 		this.x = x;
@@ -31,10 +31,28 @@ public class TestGhost {
 		this.speed=speed;
 	}
 	
+	public void setBenignMode(boolean benignmode){
+		
+		this.benignmode = benignmode;
+		
+		if(benignmode){
+			temp= c;
+			c = Color.blue;
+		}
+		else{
+			c=temp;
+		}
+	}
+	
 	public void paint (Graphics g){
 		//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(c);
 		g.fillOval(x, y, width, height);
+	}
+	
+	public boolean getBenignMode(){
+		
+		return benignmode;
 	}
 	
 	public void move(boolean moving, int xplusminus, int yplusminus){
@@ -79,7 +97,11 @@ public class TestGhost {
 	
 	  public boolean collision(BallTest r){
 	        double distance = Math.sqrt(((this.getx() - r.getx()) * (this.getx() - r.getx()))+ ((this.gety() - r.gety()) * (this.gety() - r.gety())));
-	     
+	        
+	        if (benignmode){
+	        	return true;
+	        }
+	        else{
 	        if (distance <= (this.height / 2) + (r.height / 2)){
 	            //balls have collided
 	        	System.out.println("Collision!!!!");
@@ -87,5 +109,6 @@ public class TestGhost {
 	        }else{
 	            return true;
 	         }
+	        }
 	    }
 }

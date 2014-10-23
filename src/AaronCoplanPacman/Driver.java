@@ -1,4 +1,4 @@
-package AaronCoplanPacman;
+ package AaronCoplanPacman;
 
 import java.io.IOException;
 public class Driver {

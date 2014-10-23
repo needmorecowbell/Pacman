@@ -35,6 +35,7 @@ public class Game extends JPanel{
 	public static char direction = 0;
 	public static JFrame frame = new JFrame();
 	public static int score = 0;
+	public static int benignmodetimer = 0;
 	public static final String NAME = "Pacman";
 	public static boolean hasnotcollided = true;
 	
@@ -62,6 +63,7 @@ public class Game extends JPanel{
 		ghosts.add(new TestGhost(50,50, Color.blue,1,-1));
 		ghosts.add(new TestGhost(250, 70, Color.cyan,-1,1));
 		ghosts.add(new TestGhost(50, 200, Color.white,1,1));
+		ghosts.add(new TestGhost(250, 250, Color.green, -1, -1));
 		pills.add(pill1);
 	
 		
@@ -107,10 +109,19 @@ public class Game extends JPanel{
 			for (int x=0; x<pills.size();x++){
 				if(pills.get(x).pillEaten(ball) == false){
 					pills.remove(x);
-					//switch ghosts into benign ones
+					for(int X = 0; X < ghosts.size(); X++){
+						ghosts.get(X).setBenignMode(true);
+					}
 				}
 			}
-		
+			if (ghosts.get(0).getBenignMode()){
+			benignmodetimer++;
+			}
+			if(benignmodetimer >= 500){
+				for (int x = 0; x<ghosts.size(); x++){
+					ghosts.get(x).setBenignMode(false);
+				}
+			}
 		}
 	}
 	
