@@ -2,6 +2,7 @@ package AaronCoplanPacman;
 
 import javax.swing.*;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ public class initialWindow {
 	 JFrame menuframe = new JFrame("");
 	 JFrame creditsframe = new JFrame("");
 	 JFrame scoresframe = new JFrame("");
+	 JButton btnAddVoice= new JButton("Add/Remove Voice");
 	 boolean open = true;
 	
 
@@ -29,17 +31,21 @@ public class initialWindow {
 		JButton playgame = new JButton("Play Pacman");
 		JButton viewscores = new JButton("View High Scores");
 		JButton viewcredits = new JButton("Credits");
+		JButton settings = new JButton("Settings");
 		
 		playgame.addActionListener(new playGame());
 		viewscores.addActionListener(new viewScores());
 		viewcredits.addActionListener(new viewCredits());
+		settings.addActionListener(new changeSettings());
 		
 		Container cp = menuframe.getContentPane();
 		
-		cp.setLayout(new GridLayout(3, 0));
+		cp.setLayout(new GridLayout(4, 0));
 		cp.add(playgame);
 		cp.add(viewscores);
+		cp.add(settings);
 		cp.add(viewcredits);
+		
 		
 		menuframe.pack();
 		menuframe.setSize(600, 450);
@@ -64,6 +70,55 @@ public class initialWindow {
 	
 	}
 	
+	private class changeSettings implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			menuframe.setVisible(false);
+			
+			 JFrame settingframe = new JFrame("");
+			 boolean open = true;
+			 
+			 
+				open = true;
+				settingframe.setTitle("Pacman Settings");
+				settingframe.setResizable(false);
+				settingframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				
+			
+				
+				btnAddVoice.addActionListener(new addVoice());
+				
+				Container cp = settingframe.getContentPane();
+				
+				cp.setLayout(new GridLayout(1, 0));
+				cp.add(btnAddVoice);
+			
+				settingframe.pack();
+				settingframe.setSize(600, 450);
+				
+				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+				double width = screenSize.getWidth();
+				double height = screenSize.getHeight();
+				
+				int locationx = (int)((width / 2) - 300);
+				int locationy = (int)((height / 2) - 225);
+				
+				settingframe.setLocation(locationx, locationy);
+				
+				settingframe.setVisible(true);
+				
+				while(open){
+					//System.out.println("open");
+					
+				}
+				
+		}
+	}
+	private class addVoice implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			btnAddVoice.setBackground(Color.blue);
+			
+		}
+	}
 	private class playGame implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e){
