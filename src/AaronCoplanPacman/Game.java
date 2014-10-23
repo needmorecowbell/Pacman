@@ -135,8 +135,13 @@ public class Game extends JPanel{
 			catch(IndexOutOfBoundsException f){
 				System.out.println("Index out of bounds");
 			}
+			try{
 			if (ghosts.get(0).getBenignMode()){
 			benignmodetimer++;
+			}
+			}
+			catch(IndexOutOfBoundsException e){
+				System.out.println("Adam sucks(which one?)");
 			}
 			if(benignmodetimer >= 500){
 				try{
