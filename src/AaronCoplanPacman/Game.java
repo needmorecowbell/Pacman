@@ -26,6 +26,7 @@ public class Game extends JPanel{
 	public static ArrayList<TestGhost> ghosts = new ArrayList<TestGhost>();
 	public static ArrayList<TestGhost> deadghosts = new ArrayList<TestGhost>();
 	public static ArrayList<Pill> pills = new ArrayList<Pill>();
+	public static ArrayList<Dots> dots = new ArrayList<Dots>();
 	
 
 	public static final int WIDTH = (160 * SCALE);
@@ -68,7 +69,17 @@ public class Game extends JPanel{
 		pills.add(new Pill(30, 30));
 		pills.add(new Pill(420, 30));
 		pills.add(new Pill(420, 410));
-	
+		
+		int dotsy = 38;
+		//increment x location by 39 for each pill.
+		while (dotsy <= 420){
+		
+		for (int start = 69; start < 420; start += 39){
+			dots.add(new Dots(start, dotsy));
+		}
+		
+		dotsy += 37;
+		}
 		
 		Game game = new Game();		
 		
@@ -122,6 +133,14 @@ public class Game extends JPanel{
 						ghosts.get(X).setBenignMode(true);
 					}
 					
+				}
+			}
+			
+			for (int x = 0; x < dots.size(); x++){
+				
+				if (dots.get(x).dotEaten(ball) == false){
+					score += 10;
+					dots.remove(x);
 				}
 			}
 			
@@ -222,6 +241,7 @@ public class Game extends JPanel{
 	
 		for(int x=0; x<pills.size();x++){pills.get(x).paint(g2d);}
 		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
+		for(int x=0; x<dots.size();x++){dots.get(x).paint(g2d);}
 
 	}
 
