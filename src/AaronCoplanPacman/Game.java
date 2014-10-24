@@ -173,10 +173,10 @@ public class Game extends JPanel{
 				}
 				
 				for(int x=0; x<deadghosts.size(); x++){
-					
-					ghosts.get(x).paintincenter();
+					deadghosts.get(x).paintincenter();
 					ghosts.add(deadghosts.get(x));
 				}
+				
 				deadghosts.clear();
 			}
 			
@@ -243,8 +243,8 @@ public class Game extends JPanel{
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
 		bottomwall.paint(g2d);
-		corridortop.paint(g2d);
-		corridorbottom.paint(g2d);
+		//corridortop.paint(g2d);
+		//corridorbottom.paint(g2d);
 		
 		for(int x=0; x<dots.size();x++){dots.get(x).paint(g2d);}
 		for(int x=0; x<pills.size();x++){pills.get(x).paint(g2d);}
