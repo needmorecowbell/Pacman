@@ -62,7 +62,7 @@ public class Game extends JPanel{
 		
 		ghosts.add(new TestGhost("Adam M", 50,50, Color.pink,1,-1));
 		ghosts.add(new TestGhost("Aaron", 250, 70, Color.cyan,-1,1));
-		ghosts.add(new TestGhost("Adam Ack", 50, 200, Color.white,1,1));
+		ghosts.add(new TestGhost("Adam Ack", 50, 200, Color.magenta,1,1));
 		ghosts.add(new TestGhost("Eugene Crabs", 250, 250, Color.green, -1, -1));
 		pills.add(new Pill(30, 410));
 		pills.add(new Pill(30, 30));
