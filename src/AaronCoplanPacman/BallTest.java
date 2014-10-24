@@ -5,10 +5,9 @@ import java.awt.Graphics;
 
 public class BallTest {
 	
-	int width = 30;
-	int height = 30;
-	int x = ((160 * 3) / 2) - 30;
-	int y = ((160 * 3) / 2) - 30;
+	int width = 30, height = 30;
+	int x = ((160 * 3) / 2) - 30, y = ((160 * 3) / 2) - 30;
+	private int cx = 0, cy = 0;
 	
 	public BallTest(){}
 	
@@ -25,6 +24,18 @@ public class BallTest {
 	public int gety(){
 		
 		return y;
+	}
+	
+	public int getcy(){
+		
+		cy = y + (height / 2);
+		return cy;
+	}
+	
+	public int getcx(){
+		
+		cx = x + (height / 2);
+		return cx;
 	}
 	
 	public void move(char dir, int posneg){

@@ -8,6 +8,7 @@ public class Pill {
 
 	private int x = 100, y = 100;
 	private int width = 20, height = 20;
+	int cx = 0, cy = 0;
 	
 	public Pill(int x, int y){
 		
@@ -35,9 +36,20 @@ public class Pill {
 		return y;
 	}
 	
+	public int getcx(){
+		
+		cx = x + (height / 2);
+		return cx;
+	}
+	
+	public int getcy(){
+		
+		cy = y + (height / 2);
+		return cy;
+	}
 
 	public boolean pillEaten(BallTest r){
-        double distance = Math.sqrt(((this.getx() - r.getx()) * (this.getx() - r.getx()))+ ((this.gety() - r.gety()) * (this.gety() - r.gety())));
+        double distance = Math.sqrt(((this.getcx() - r.getcx()) * (this.getcx() - r.getcx()))+ ((this.getcy() - r.getcy()) * (this.getcy() - r.getcy())));
      
         if (distance <= (this.height / 2) + (r.height / 2))
         {

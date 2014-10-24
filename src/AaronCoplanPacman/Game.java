@@ -27,6 +27,7 @@ public class Game extends JPanel{
 	public static ArrayList<TestGhost> deadghosts = new ArrayList<TestGhost>();
 	public static ArrayList<Pill> pills = new ArrayList<Pill>();
 	public static ArrayList<Dots> dots = new ArrayList<Dots>();
+	public static ArrayList<Corridor> corridors = new ArrayList<Corridor>();
 	
 
 	public static final int WIDTH = (160 * SCALE);
@@ -40,6 +41,8 @@ public class Game extends JPanel{
 	public static int benignmodetimer = 0;
 	public static final String NAME = "Pacman";
 	public static boolean hasnotcollided = true;
+	public static Corridor corridortop = new Corridor(233, 39, 400, 40);//223 is center of x value
+	public static Corridor corridorbottom = new Corridor(233, 415, 400, 40);
 	
 	
 	
@@ -70,16 +73,18 @@ public class Game extends JPanel{
 		pills.add(new Pill(420, 30));
 		pills.add(new Pill(420, 410));
 		
-		int dotsy = 38;
+		int dotsy = 34;
 		//increment x location by 39 for each pill.
 		while (dotsy <= 420){
 		
-		for (int start = 69; start < 420; start += 39){
+		for (int start = 62; start < 420; start += 38){
 			dots.add(new Dots(start, dotsy));
 		}
 		
-		dotsy += 37;
+		dotsy += 38;
 		}
+		
+		
 		
 		Game game = new Game();		
 		
@@ -169,6 +174,7 @@ public class Game extends JPanel{
 				
 				for(int x=0; x<deadghosts.size(); x++){
 					
+					ghosts.get(x).paintincenter();
 					ghosts.add(deadghosts.get(x));
 				}
 				deadghosts.clear();
@@ -237,11 +243,13 @@ public class Game extends JPanel{
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
 		bottomwall.paint(g2d);
+		corridortop.paint(g2d);
+		corridorbottom.paint(g2d);
 		
-	
+		for(int x=0; x<dots.size();x++){dots.get(x).paint(g2d);}
 		for(int x=0; x<pills.size();x++){pills.get(x).paint(g2d);}
 		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
-		for(int x=0; x<dots.size();x++){dots.get(x).paint(g2d);}
+		
 
 	}
 

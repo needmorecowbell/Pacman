@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class TestGhost {
 
+	int repaintx = ((160 * 3) / 2) - 30, repainty = ((160 * 3) / 2) - 30;
 	int x,y;
 	int width=30;
 	int height=30;
@@ -46,6 +47,12 @@ public class TestGhost {
 		else{
 			c=temp;
 		}
+	}
+	
+	public void paintincenter(){
+		
+		x = repaintx;
+		y = repainty;
 	}
 	
 	public void paint (Graphics g){

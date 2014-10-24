@@ -6,6 +6,7 @@ import java.awt.Graphics;
 public class Dots {
 
 	private int x = 100,y = 100;
+	private int centerx = 0, centery = 0;
 	private int width = 10, height = 10;
 	
 	public Dots(int x, int y){
@@ -20,16 +21,18 @@ public void paint(Graphics g){
 		g.fillOval(x, y, width, height);
 	}
 
-public int getx(){
-	return x;
+public int getcx(){
+	centerx = x + (height / 2);
+	return centerx;
 }
 
-public int gety(){
-	return y;
+public int getcy(){
+	centery = y + (height / 2);
+	return centery;
 }
 
 public boolean dotEaten(BallTest r){
-    double distance = Math.sqrt(((this.getx() - r.getx()) * (this.getx() - r.getx()))+ ((this.gety() - r.gety()) * (this.gety() - r.gety())));
+    double distance = Math.sqrt(((this.getcx() - r.getcx()) * (this.getcx() - r.getcx()))+ ((this.getcy() - r.getcy()) * (this.getcy() - r.getcy())));
  
     if (distance <= (this.height / 2) + (r.height / 2))
     {
