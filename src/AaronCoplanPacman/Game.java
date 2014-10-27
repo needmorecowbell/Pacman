@@ -270,17 +270,25 @@ public class Game extends JPanel{
 	public void KeyPressed(KeyEvent k) 
     {
         if(k.getKeyCode()==KeyEvent.VK_LEFT){
-            
+            if(ball.verticalcorridorClash(corridorright) == 1){
+            	
+            }
+            else{
         	direction = 'x';
         	movelrud = 0;
+            }
         }
         if(k.getKeyCode()==KeyEvent.VK_RIGHT){
-         
+        	if(ball.verticalcorridorClash(corridorleft) == 1){
+        		
+        	}
+        	else{
         	direction = 'x';
         	movelrud = 1;
+        	}
         }
         if(k.getKeyCode()==KeyEvent.VK_UP){
-            if(ball.corridorClash(corridortop) == 1){
+            if(ball.horizontalcorridorClash(corridortop) == 1){
             	
             }
             else{
@@ -289,7 +297,7 @@ public class Game extends JPanel{
             }
         }
         if(k.getKeyCode()==KeyEvent.VK_DOWN){
-            if(ball.corridorClash(corridortop) == 1){
+            if(ball.horizontalcorridorClash(corridortop) == 1){
             
             }
             else{
