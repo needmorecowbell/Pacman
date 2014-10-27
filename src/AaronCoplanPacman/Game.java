@@ -43,6 +43,9 @@ public class Game extends JPanel{
 	public static boolean hasnotcollided = true;
 	public static Corridor corridortop = new Corridor(235, 37, 400, 40);//235 is center of x value
 	public static Corridor corridorbottom = new Corridor(235, 417, 400, 40);//recentered corridor values
+	public static Corridor corridorleft = new Corridor(55, 227, 40, 420);
+	public static Corridor corridorright = new Corridor(415, 227, 40, 420);
+	
 	
 	
 	
@@ -245,6 +248,8 @@ public class Game extends JPanel{
 		bottomwall.paint(g2d);
 		corridortop.paint(g2d);
 		corridorbottom.paint(g2d);
+		corridorleft.paint(g2d);
+		corridorright.paint(g2d);
 		
 		for(int x=0; x<dots.size();x++){dots.get(x).paint(g2d);}
 		for(int x=0; x<pills.size();x++){pills.get(x).paint(g2d);}
