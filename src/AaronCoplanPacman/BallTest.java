@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class BallTest {
 	
 	int width = 30, height = 30;
-	int x = ((160 * 3) / 2) - 30, y = ((160 * 3) / 2) - 30;
+	int x = 220, y = 24;
 	private int cx = 0, cy = 0;
 	
 	public BallTest(){}
@@ -74,4 +74,15 @@ public class BallTest {
 	
 		y += changey;
 	}
+	
+	public int corridorClash(Corridor a){
+		
+		if((getcy() > a.corridorTop()) && (getcy() + 15 < a.corridorBottom()) && (cx > a.corridorLeft()) && (cx < a.corridorRight())){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
+
 }

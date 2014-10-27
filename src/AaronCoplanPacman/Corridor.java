@@ -29,4 +29,24 @@ public class Corridor {
 		g.fillRect(x,height+y,width+wallwidth,wallwidth);
 		
 	}
+	
+	public int corridorTop(){
+		
+		return cy;
+	}
+	
+	public int corridorBottom(){
+		
+		return (cy + (height / 2));
+	}
+	
+	public int corridorLeft(){
+		
+		return (cx - (width / 2));
+	}
+	
+	public int corridorRight(){
+		
+		return (cx + (width / 2));
+	}
 }
