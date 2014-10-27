@@ -41,8 +41,8 @@ public class Game extends JPanel{
 	public static int benignmodetimer = 0;
 	public static final String NAME = "Pacman";
 	public static boolean hasnotcollided = true;
-	public static Corridor corridortop = new Corridor(233, 39, 400, 40);//223 is center of x value
-	public static Corridor corridorbottom = new Corridor(233, 415, 400, 40);
+	public static Corridor corridortop = new Corridor(235, 37, 400, 40);//235 is center of x value
+	public static Corridor corridorbottom = new Corridor(235, 417, 400, 40);//recentered corridor values
 	
 	
 	
@@ -243,8 +243,8 @@ public class Game extends JPanel{
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
 		bottomwall.paint(g2d);
-		//corridortop.paint(g2d);
-		//corridorbottom.paint(g2d);
+		corridortop.paint(g2d);
+		corridorbottom.paint(g2d);
 		
 		for(int x=0; x<dots.size();x++){dots.get(x).paint(g2d);}
 		for(int x=0; x<pills.size();x++){pills.get(x).paint(g2d);}

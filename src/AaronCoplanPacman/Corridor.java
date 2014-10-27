@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class Corridor {
 	int width = 0;
 	int height;
-	int wallwidth = 5;
+	int wallwidth = 6;//how wide each wall is
 	int cx; int cy;
 	int x, y;
 	
@@ -16,7 +16,7 @@ public class Corridor {
 		this.height = height;
 		this.cx = cx;
 		this.cy = cy;
-		x = cx - (width / 2);
+		x = cx - (width / 2);//find x coordinates from center x coordinates
 		y = cy - (height / 2);
 	}
 	
