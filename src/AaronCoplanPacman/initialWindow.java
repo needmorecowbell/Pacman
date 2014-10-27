@@ -62,16 +62,17 @@ public class initialWindow {
 		menuframe.setVisible(true);
 		
 		while(open){
-			System.out.println("open");
+			//System.out.println("open");
 			
 		}
-		System.out.println("closed");
+		//System.out.println("closed");
 		Game.start();
 	
 	}
 	
 	private class changeSettings implements ActionListener{
 		public void actionPerformed(ActionEvent e){
+			
 			menuframe.setVisible(false);
 			
 			 JFrame settingframe = new JFrame("");
@@ -106,10 +107,8 @@ public class initialWindow {
 				
 				settingframe.setVisible(true);
 				
-				while(open){
-					//System.out.println("open");
-					
-				}
+				
+				
 				
 		}
 	}
