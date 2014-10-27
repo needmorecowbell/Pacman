@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 //
 public class Game extends JPanel{
-	
+	//THIS IS A TEST
 	private static final long serialVersionUID = 1L;
 	public static final int SCALE = 3;	
 	
