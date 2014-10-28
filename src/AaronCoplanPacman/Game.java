@@ -270,7 +270,7 @@ public class Game extends JPanel{
 	public void KeyPressed(KeyEvent k) 
     {
         if(k.getKeyCode()==KeyEvent.VK_LEFT){
-            if(ball.verticalcorridorClash(corridorright) == 1){
+            if(ball.verticalcorridorClash(corridorleft) == 1){
             	
             }
             else{

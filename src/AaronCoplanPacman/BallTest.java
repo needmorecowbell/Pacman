@@ -77,7 +77,7 @@ public class BallTest {
 	
 	public int horizontalcorridorClash(Corridor a){
 		
-		if((getcy() > a.corridorTop()) && (getcy() + 15 < a.corridorBottom()) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.corridorBottom()) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
 			return 1;
 		}
 		else{
@@ -87,7 +87,7 @@ public class BallTest {
 	
 	public int verticalcorridorClash(Corridor a){
 		
-		if((getcy() > a.corridorTop()) && (getcy() + 15 < a.corridorBottom()) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		if((getcy() > a.verticalcorridorTop()) && (getcy() + 15 < a.corridorBottom()) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
 			return 1;
 		}
 		else{
