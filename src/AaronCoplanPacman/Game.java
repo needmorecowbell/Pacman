@@ -103,6 +103,7 @@ public class Game extends JPanel{
 		
 		while (hasnotcollided){
 
+			ball.square1(corridortop, corridorleft);
 			game.move();
 			game.repaint();
 			frame.setTitle(NAME + ": " + score);
@@ -232,6 +233,8 @@ public class Game extends JPanel{
 			System.out.println("Collision with bottom wall.");
 			ball.movebally(-1);
 		}
+		
+
 	}
 		
 	@Override
@@ -270,6 +273,8 @@ public class Game extends JPanel{
 	public void KeyPressed(KeyEvent k) 
     {
         if(k.getKeyCode()==KeyEvent.VK_LEFT){
+        	if((ball.square1(corridortop, corridorleft)==1)){}
+        	else{
             if(ball.verticalcorridorClash(corridorleft) == 1){
             	
             }
@@ -277,8 +282,10 @@ public class Game extends JPanel{
         	direction = 'x';
         	movelrud = 0;
             }
+        	}
         }
         if(k.getKeyCode()==KeyEvent.VK_RIGHT){
+        	//ball.square1(corridortop, corridorleft);
         	if(ball.verticalcorridorClash(corridorleft) == 1){
         		
         	}
@@ -286,8 +293,11 @@ public class Game extends JPanel{
         	direction = 'x';
         	movelrud = 1;
         	}
+        
         }
         if(k.getKeyCode()==KeyEvent.VK_UP){
+        	if(ball.square1(corridortop, corridorleft) == 1){}
+        	else{
             if(ball.horizontalcorridorClash(corridortop) == 1){
             	
             }
@@ -295,8 +305,10 @@ public class Game extends JPanel{
             	direction = 'y';
             	movelrud = 1;
             }
+        	}
         }
         if(k.getKeyCode()==KeyEvent.VK_DOWN){
+        	//ball.square1(corridortop, corridorleft);
             if(ball.horizontalcorridorClash(corridortop) == 1){
             
             }

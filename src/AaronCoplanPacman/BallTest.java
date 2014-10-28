@@ -77,7 +77,7 @@ public class BallTest {
 	
 	public int horizontalcorridorClash(Corridor a){
 		
-		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.corridorBottom()) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.horizontalcorridorBottom()) && (getcx() > a.corridorLeft() + 40) && (getcx() < a.corridorRight() - 40)){
 			return 1;
 		}
 		else{
@@ -87,12 +87,25 @@ public class BallTest {
 	
 	public int verticalcorridorClash(Corridor a){
 		
-		if((getcy() > a.verticalcorridorTop()) && (getcy() + 15 < a.corridorBottom()) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() - 40) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
 			return 1;
 		}
 		else{
 			return 0;
 		}
 	}
+	
+	public int square1(Corridor hor, Corridor vert){
+		
+		if (getcy() < hor.horizontalcorridorBottom() && getcx() < vert.corridorRight()){
+			
+			System.out.println("IN A FREAKING SQUARE");
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
+	
 
 }

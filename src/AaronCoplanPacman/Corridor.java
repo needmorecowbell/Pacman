@@ -32,7 +32,7 @@ public class Corridor {
 	
 	public int verticalcorridorTop(){
 		
-		return cy - (height / 2);
+		return cy - (height / 2) - 16;
 	}
 	
 	public int horizontalcorridorTop(){
@@ -40,18 +40,23 @@ public class Corridor {
 		return cy;
 	}
 	
-	public int corridorBottom(){
+	public int horizontalcorridorBottom(){
 		
 		return (cy + (height / 2));
 	}
 	
+	public int verticalcorridorBottom(){
+		
+		return (cy + (height / 2) + 16);
+	}
+	
 	public int corridorLeft(){
 		
-		return (cx - (width / 2)) + 12;
+		return (cx - (width / 2) - 16);
 	}
 	
 	public int corridorRight(){
 		
-		return (cx + (width / 2) - 12);
+		return (cx + (width / 2) + 16);
 	}
 }
