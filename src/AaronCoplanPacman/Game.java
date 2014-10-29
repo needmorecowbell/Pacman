@@ -225,7 +225,7 @@ public class Game extends JPanel{
 				System.out.println("Collision with right wall.");
 				ball.moveballx(-1);
 		}
-		if (!(bally > 10)){
+ 		if (!(bally > 10)){
 			System.out.println("Collision with top wall.");
 			ball.movebally(1);
 		}
