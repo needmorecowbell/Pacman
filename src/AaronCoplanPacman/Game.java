@@ -28,6 +28,7 @@ public class Game extends JPanel{
 	public static ArrayList<Pill> pills = new ArrayList<Pill>();
 	public static ArrayList<Dots> dots = new ArrayList<Dots>();
 	public static ArrayList<Corridor> corridors = new ArrayList<Corridor>();
+	public static ArrayList<PaintOver> coverup = new ArrayList<PaintOver>();
 	
 
 	public static final int WIDTH = (160 * SCALE);
@@ -75,6 +76,10 @@ public class Game extends JPanel{
 		pills.add(new Pill(30, 30));
 		pills.add(new Pill(420, 30));
 		pills.add(new Pill(420, 410));
+		coverup.add(new PaintOver(75, 23, 6, 34));
+		coverup.add(new PaintOver(41, 57, 34, 6));
+		coverup.add(new PaintOver(395, 23, 6, 34));
+		coverup.add(new PaintOver(401, 57, 34, 6));
 		
 		int dotsy = 34;
 		//increment x location by 39 for each pill.
@@ -244,7 +249,6 @@ public class Game extends JPanel{
 		Graphics g2d = (Graphics2D)g;
 		g2d.setColor(Color.gray);
 		g2d.fillRect(0, 0, (160 * SCALE), (160 * SCALE));
-		ball.paint(g2d);
 		leftwall.paint(g2d);
 		rightwall.paint(g2d);
 		topwall.paint(g2d);
@@ -253,10 +257,12 @@ public class Game extends JPanel{
 		corridorbottom.paint(g2d);
 		corridorleft.paint(g2d);
 		corridorright.paint(g2d);
-		
-		for(int x=0; x<dots.size();x++){dots.get(x).paint(g2d);}
-		for(int x=0; x<pills.size();x++){pills.get(x).paint(g2d);}
+		for(int x=0;x<coverup.size();x++){coverup.get(x).paint(g2d);}
+		for(int x=0;x<dots.size();x++){dots.get(x).paint(g2d);}
+		for(int x=0;x<pills.size();x++){pills.get(x).paint(g2d);}
 		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
+		ball.paint(g2d);
+		
 		
 
 	}
