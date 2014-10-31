@@ -31,7 +31,7 @@ public int getcy(){
 	return centery;
 }
 
-public boolean dotEaten(BallTest r){
+public boolean dotEaten(Pacman r){
     double distance = Math.sqrt(((this.getcx() - r.getcx()) * (this.getcx() - r.getcx()))+ ((this.getcy() - r.getcy()) * (this.getcy() - r.getcy())));
  
     if (distance <= (this.height / 2) + (r.height / 2))

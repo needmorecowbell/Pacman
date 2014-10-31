@@ -116,7 +116,7 @@ public class TestGhost {
 	public void setxvelo(int xvelo){this.xvelo=xvelo;}
 	public void setyvelo(int yvelo){this.yvelo=yvelo;}
 	
-	  public boolean collision(BallTest r, TestGhost a){
+	  public boolean collision(Pacman r, TestGhost a){
 	        double distance = Math.sqrt(((a.getx() - r.getx()) * (a.getx() - r.getx()))+ ((a.gety() - r.gety()) * (a.gety() - r.gety())));
 	        
 	        if (benignmode){

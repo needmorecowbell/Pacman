@@ -48,7 +48,7 @@ public class Pill {
 		return cy;
 	}
 
-	public boolean pillEaten(BallTest r){
+	public boolean pillEaten(Pacman r){
         double distance = Math.sqrt(((this.getcx() - r.getcx()) * (this.getcx() - r.getcx()))+ ((this.getcy() - r.getcy()) * (this.getcy() - r.getcy())));
      
         if (distance <= (this.height / 2) + (r.height / 2))

@@ -2,18 +2,28 @@ package AaronCoplanPacman;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-public class BallTest {
+import javax.imageio.ImageIO;
+
+public class Pacman {
 	
 	int width = 30, height = 30;
 	int x = 220, y = 24;
 	private int cx = 0, cy = 0;
 	
-	public BallTest(){}
+	BufferedImage img = null;
+	public Pacman(){
+		try {
+			img=ImageIO.read(this.getClass().getClassLoader().getResource("res/pacman.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void paint(Graphics g){
-		g.setColor(Color.orange);
-		g.fillOval(x, y, width, height);
+		g.drawImage(img, x, y, null);
 	}
 	
 	public int getx(){

@@ -16,7 +16,7 @@ public class Game extends JPanel{
 	private static final long serialVersionUID = 1L;
 	public static final int SCALE = 3;	
 	
-	public static BallTest ball = new BallTest();
+	public static Pacman ball = new Pacman();
 	public VerticalWalls leftwall = new VerticalWalls(0, 0);
 	public VerticalWalls rightwall = new VerticalWalls(((160 * SCALE) - 15), 0);
 	public HorizontalWalls topwall = new HorizontalWalls(0, 0);
