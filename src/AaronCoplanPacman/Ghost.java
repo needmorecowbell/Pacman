@@ -2,7 +2,7 @@ package AaronCoplanPacman;
 
 import java.awt.*;
 
-public class TestGhost {
+public class Ghost {
 
 	int repaintx = ((160 * 3) / 2) - 30, repainty = ((160 * 3) / 2) - 30;
 	int x,y;
@@ -15,7 +15,7 @@ public class TestGhost {
 	boolean benignmode = false;
 	String name = "";
 	
-	public TestGhost(String name, int x, int y, Color c, int xvelo, int yvelo){
+	public Ghost(String name, int x, int y, Color c, int xvelo, int yvelo){
 		
 		this.name = name;
 		this.x = x;
@@ -26,7 +26,7 @@ public class TestGhost {
 		this.temp = c;
 	}
 	
-	public TestGhost(int x, int y, Color c, int xvelo, int yvelo,int speed){
+	public Ghost(int x, int y, Color c, int xvelo, int yvelo,int speed){
 		
 		this.x = x;
 		this.y = y;
@@ -116,7 +116,7 @@ public class TestGhost {
 	public void setxvelo(int xvelo){this.xvelo=xvelo;}
 	public void setyvelo(int yvelo){this.yvelo=yvelo;}
 	
-	  public boolean collision(Pacman r, TestGhost a){
+	  public boolean collision(Pacman r, Ghost a){
 	        double distance = Math.sqrt(((a.getx() - r.getx()) * (a.getx() - r.getx()))+ ((a.gety() - r.gety()) * (a.gety() - r.gety())));
 	        
 	        if (benignmode){

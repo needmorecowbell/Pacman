@@ -23,8 +23,8 @@ public class Game extends JPanel{
 	public HorizontalWalls bottomwall = new HorizontalWalls(0, ((160 * SCALE) - 38));
 	
 	public static boolean ghostmove = true;
-	public static ArrayList<TestGhost> ghosts = new ArrayList<TestGhost>();
-	public static ArrayList<TestGhost> deadghosts = new ArrayList<TestGhost>();
+	public static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
+	public static ArrayList<Ghost> deadghosts = new ArrayList<Ghost>();
 	public static ArrayList<Pill> pills = new ArrayList<Pill>();
 	public static ArrayList<Dots> dots = new ArrayList<Dots>();
 	public static ArrayList<Corridor> corridors = new ArrayList<Corridor>();
@@ -68,10 +68,10 @@ public class Game extends JPanel{
 	public static void start(){
 		hasnotcollided= true;
 		
-		ghosts.add(new TestGhost("Adam M", 50,50, Color.pink,1,-1));
-		ghosts.add(new TestGhost("Aaron", 250, 150, Color.cyan,-1,1));
-		ghosts.add(new TestGhost("Adam Ack", 50, 200, Color.magenta,1,1));
-		ghosts.add(new TestGhost("Eugene Crabs", 250, 250, Color.green, -1, -1));
+		ghosts.add(new Ghost("Adam M", 50,50, Color.pink,1,-1));
+		ghosts.add(new Ghost("Aaron", 250, 150, Color.cyan,-1,1));
+		ghosts.add(new Ghost("Adam Ack", 50, 200, Color.magenta,1,1));
+		ghosts.add(new Ghost("Eugene Crabs", 250, 250, Color.green, -1, -1));
 		pills.add(new Pill(30, 410));
 		pills.add(new Pill(30, 30));
 		pills.add(new Pill(420, 30));
@@ -192,7 +192,7 @@ public class Game extends JPanel{
 		}
 	}
 	
-	public static void ghostcollisions(TestGhost g, int ghostX, int ghostY){
+	public static void ghostcollisions(Ghost g, int ghostX, int ghostY){
 		
 		if (!((ghostX > 10) && (ghostX < ((160 * 3) - 45)) && (ghostY > 10) && (ghostY < ((160 * 3) - 68)))){
 			if (!(ghostX > 10)){

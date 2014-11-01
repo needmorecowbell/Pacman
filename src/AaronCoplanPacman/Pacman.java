@@ -1,4 +1,4 @@
-package AaronCoplanPacman;
+ package AaronCoplanPacman;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,17 +13,20 @@ public class Pacman {
 	int x = 220, y = 24;
 	private int cx = 0, cy = 0;
 	
-	BufferedImage img = null;
+	BufferedImage pacmanRight,pacmanLeft;
 	public Pacman(){
 		try {
-			img=ImageIO.read(this.getClass().getClassLoader().getResource("res/pacman.png"));
+			pacmanRight=ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanRight.png"));
+			pacmanLeft= ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanLeft.png"));
+			height= pacmanRight.getHeight();
+			width= pacmanRight.getWidth();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void paint(Graphics g){
-		g.drawImage(img, x, y, null);
+		g.drawImage(pacmanRight, x, y, null);
 	}
 	
 	public int getx(){
