@@ -9,10 +9,13 @@ import javax.imageio.ImageIO;
 
 public class Dots {
 
+	//instance data (including image)
 	private int x = 100,y = 100;
 	private int centerx = 0, centery = 0;
 	private int width = 10, height = 10;
 	private BufferedImage img;
+	
+	//constructor sets location and uses try/catch to get image
 	public Dots(int x, int y){
 		
 		this.x = x;
@@ -26,21 +29,21 @@ public class Dots {
 			e.printStackTrace();
 		}
 	}
-	
+//paint method that draws the image at an x, y location	
 public void paint(Graphics g){	
 		g.drawImage(img,x,y,null);
 	}
-
+//accessor method to obtain center x location
 public int getcx(){
 	centerx = x + (height / 2);
 	return centerx;
 }
-
+//accessor method to obtain center y location
 public int getcy(){
 	centery = y + (height / 2);
 	return centery;
 }
-
+//collision method to determine if the dot is eaten by pacman
 public boolean dotEaten(Pacman r){
     double distance = Math.sqrt(((this.getcx() - r.getcx()) * (this.getcx() - r.getcx()))+ ((this.getcy() - r.getcy()) * (this.getcy() - r.getcy())));
  
