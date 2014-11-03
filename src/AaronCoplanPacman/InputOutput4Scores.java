@@ -27,10 +27,10 @@ public class InputOutput4Scores {
 	
 	public void writehighscores(int score) throws IOException{
 		
+		ArrayList<Player> highscorelist = figureoutifHighScore(score);
+		
 		FileWriter fw = new FileWriter("src/scoreRes/ScoreList", false);
 		PrintWriter file = new PrintWriter(fw);
-		
-		ArrayList<Player> highscorelist = figureoutifHighScore(score);
 		
 		file.println(highscorelist.get(0).getName());
 		file.println(highscorelist.get(0).getScore());
@@ -59,6 +59,7 @@ public class InputOutput4Scores {
 	public ArrayList<Player> figureoutifHighScore(int score) throws IOException{
 		
 		ArrayList<Player> players = readFromFile();
+		System.out.println(players.get(0).getName());
 		int score1 = players.get(0).getScore();
 		int score2 = players.get(1).getScore();
 		int score3 = players.get(2).getScore();

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 //
 public class Game extends JPanel{
@@ -197,6 +198,13 @@ public class Game extends JPanel{
 				benignmodetimer = 0;
 			}
 			
+		}
+		
+		InputOutput4Scores io = new InputOutput4Scores();
+		try {
+			io.writehighscores(score);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error Writing to High Score List!", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
