@@ -13,20 +13,41 @@ public class Pacman {
 	int x = 220, y = 24;
 	private int cx = 0, cy = 0;
 	
-	BufferedImage pacmanRight,pacmanLeft;
+	BufferedImage pacmanRight,pacmanLeft,pacmanDown,pacmanUp, sprite;
 	public Pacman(){
 		try {
 			pacmanRight=ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanRight.png"));
+			sprite = pacmanRight;
 			pacmanLeft= ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanLeft.png"));
+			pacmanUp= ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanUp.png"));
+			pacmanDown = ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanDown.png"));
+			
 			height= pacmanRight.getHeight();
 			width= pacmanRight.getWidth();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public void spriteDirection(char dir){
+		
+		switch(dir)
+		{
+		case 'l': sprite = pacmanLeft;
+		break;
+		case 'r': sprite = pacmanRight;
+		break;
+		case 'd': sprite = pacmanDown;
+		break;
+		case 'u': sprite = pacmanUp;
+		break;
+		default: sprite = pacmanRight;
+		}
 	}
 	
 	public void paint(Graphics g){
-		g.drawImage(pacmanRight, x, y, null);
+		g.drawImage(sprite, x, y, null);
 	}
 	
 	public int getx(){

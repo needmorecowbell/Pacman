@@ -285,6 +285,7 @@ public class Game extends JPanel{
             	
             }
             else{
+            ball.spriteDirection('l');	
         	direction = 'x';
         	movelrud = 0;
             }
@@ -296,6 +297,7 @@ public class Game extends JPanel{
         		
         	}
         	else{
+        	ball.spriteDirection('r');
         	direction = 'x';
         	movelrud = 1;
         	}
@@ -308,6 +310,7 @@ public class Game extends JPanel{
             	
             }
             else{
+            	ball.spriteDirection('u');
             	direction = 'y';
             	movelrud = 1;
             }
@@ -319,6 +322,7 @@ public class Game extends JPanel{
             
             }
             else{
+            	ball.spriteDirection('d');
             	direction = 'y';
             	movelrud = 0;
             }
