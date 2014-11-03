@@ -109,35 +109,34 @@ public class Pacman {
 		y += changey;
 	}
 	
-	public int horizontalcorridorClash(Corridor a){
+	public String horizontalcorridorClash(Corridor a){
 		
 		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.horizontalcorridorBottom()) && (getcx() > a.corridorLeft() + 40) && (getcx() < a.corridorRight() - 40)){
-			return 1;
+			return "horizontal";
 		}
 		else{
-			return 0;
+			return null;
 		}
 	}
 	
-	public int verticalcorridorClash(Corridor a){
+	public String verticalcorridorClash(Corridor a){
 		
 		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() - 40) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
-			return 1;
+			return "vertical";
 		}
 		else{
-			return 0;
+			return null;
 		}
 	}
 	
-	public int square1(Corridor hor, Corridor vert){
+	public String square1(Corridor hor, Corridor vert){
 		
 		if (getcy() < hor.horizontalcorridorBottom() && getcx() < vert.corridorRight()){
 			
-			System.out.println("IN A FREAKING SQUARE");
-			return 1;
+			return "upperleft";
 		}
 		else{
-			return 0;
+			return null;
 		}
 	}
 	

@@ -175,8 +175,9 @@ public class Game extends JPanel{
 			}
 			
 		}
-			if(benignmodetimer >= 450){
+			if(benignmodetimer >= 410){
 				
+				System.out.println("FLASH");
 				//ghosts flash
 			}
 			if(benignmodetimer >= 500){
@@ -191,6 +192,7 @@ public class Game extends JPanel{
 				}
 				
 				deadghosts.clear();
+				benignmodetimer = 0;
 			}
 			
 		}
@@ -266,9 +268,6 @@ public class Game extends JPanel{
 		for(int x=0;x<pills.size();x++){pills.get(x).paint(g2d);}
 		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
 		ball.paint(g2d);
-		
-		
-
 	}
 
 	private void move(){
@@ -283,53 +282,29 @@ public class Game extends JPanel{
 	public void KeyPressed(KeyEvent k) 
     {
         if(k.getKeyCode()==KeyEvent.VK_LEFT){
-        	if((ball.square1(corridortop, corridorleft)==1)){}
-        	else{
-            if(ball.verticalcorridorClash(corridorleft) == 1){
-            	
-            }
-            else{
+        	
             ball.spriteDirection('l');	
         	direction = 'x';
         	movelrud = 0;
-            }
-        	}
         }
         if(k.getKeyCode()==KeyEvent.VK_RIGHT){
-        	//ball.square1(corridortop, corridorleft);
-        	if(ball.verticalcorridorClash(corridorleft) == 1){
-        		
-        	}
-        	else{
+        	
         	ball.spriteDirection('r');
         	direction = 'x';
         	movelrud = 1;
-        	}
-        
         }
         if(k.getKeyCode()==KeyEvent.VK_UP){
-        	if(ball.square1(corridortop, corridorleft) == 1){}
-        	else{
-            if(ball.horizontalcorridorClash(corridortop) == 1){
-            	
-            }
-            else{
+    
             	ball.spriteDirection('u');
             	direction = 'y';
             	movelrud = 1;
-            }
-        	}
         }
         if(k.getKeyCode()==KeyEvent.VK_DOWN){
-        	//ball.square1(corridortop, corridorleft);
-            if(ball.horizontalcorridorClash(corridortop) == 1){
-            
-            }
-            else{
+      
             	ball.spriteDirection('d');
             	direction = 'y';
             	movelrud = 0;
-            }
+            	
         }
         if(k.getKeyCode()==KeyEvent.VK_SPACE){
         	direction = 'b';
