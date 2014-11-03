@@ -1,6 +1,11 @@
 package AaronCoplanPacman;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Ghost {
 
@@ -9,26 +14,58 @@ public class Ghost {
 	int x,y;
 	int width=30;
 	int height=30;
-	Color c;
-	final Color temp;
 	int xvelo,yvelo;
 	int  speed=2;
-	boolean benignmode = false; //whether or not the ghosts are eatable
+	String c;
+	boolean benignmode = false; //whether or not the ghosts are edible
 	String name = "";
+	BufferedImage ghost,ghostBenign,ghostBenignInvert,sprite;
 	
 	//constructor naming ghost, giving it location, color, and speeds
-	public Ghost(String name, int x, int y, Color c, int xvelo, int yvelo){
+	public Ghost(String name, int x, int y, String c, int xvelo, int yvelo){
 		
 		this.name = name;
 		this.x = x;
 		this.y = y;
-		this.c = c;
+		this.c=c;
 		this.xvelo=xvelo;
 		this.yvelo=yvelo;
-		this.temp = c;
+		
+		try {
+			
+			switch(c){
+			case "orange":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/orangeGhost.png"));
+				break;
+			case "teal":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/tealGhost.png"));
+				break;
+			case "pink":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/pinkGhost.png"));
+				break;
+			case "red":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/redGhost.png"));
+				break;
+			}
+			
+
+			
+			sprite = ghost;
+			
+			
+			ghostBenign=ImageIO.read(this.getClass().getClassLoader().getResource("res/benignGhostBlue.png"));
+			ghostBenignInvert=ImageIO.read(this.getClass().getClassLoader().getResource("res/benignGhostInverted.png"));
+	
+			
+			height= sprite.getHeight();
+			width= sprite.getWidth();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	//constructor for everything but name
-	public Ghost(int x, int y, Color c, int xvelo, int yvelo,int speed){
+	public Ghost(int x, int y, String c, int xvelo, int yvelo,int speed){
 		
 		this.x = x;
 		this.y = y;
@@ -36,18 +73,51 @@ public class Ghost {
 		this.xvelo=xvelo;
 		this.yvelo=yvelo;
 		this.speed=speed;
-		this.temp = c;
+		
+		try {
+			
+			switch(c){
+			case "orange":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/orangeGhost.png"));
+				break;
+			case "teal":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/tealGhost.png"));
+				break;
+			case "pink":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/pinkGhost.png"));
+				break;
+			case "red":
+				ghost=ImageIO.read(this.getClass().getClassLoader().getResource("res/redGhost.png"));
+				break;
+			}
+			
+
+			
+			sprite = ghost;
+			
+			
+			ghostBenign=ImageIO.read(this.getClass().getClassLoader().getResource("res/benignGhostBlue.png"));
+			ghostBenignInvert=ImageIO.read(this.getClass().getClassLoader().getResource("res/benignGhostInverted.png"));
+	
+			
+			height= sprite.getHeight();
+			width= sprite.getWidth();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
 	}
-	//turns benign mode (eatability) on or off
+	//turns benign mode (edibility) on or off
 	public void setBenignMode(boolean benignmode){
 		
 		this.benignmode = benignmode;
 		
 		if(benignmode){
-			c = Color.blue;
+			sprite = ghostBenign;
 		}
 		else{
-			c=temp;
+			sprite=ghost;
 		}
 	}
 	//method to paint in the center of the map for after it is eaten
@@ -58,9 +128,8 @@ public class Ghost {
 	}
 	//paint method sets the color and paints it in its x, y location
 	public void paint (Graphics g){
-		//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g.setColor(c);
-		g.fillOval(x, y, width, height);
+		
+		g.drawImage(sprite, x, y, null);
 	}
 	//accessor method to determine if in benign mode (eatable or not)
 	public boolean getBenignMode(){

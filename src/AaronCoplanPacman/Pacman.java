@@ -15,6 +15,7 @@ public class Pacman {
 	
 	BufferedImage pacmanRight,pacmanLeft,pacmanDown,pacmanUp, sprite;
 	public Pacman(){
+		
 		try {
 			pacmanRight=ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanRight.png"));
 			sprite = pacmanRight;
@@ -27,7 +28,6 @@ public class Pacman {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void spriteDirection(char dir){
