@@ -131,7 +131,7 @@ public class Ghost {
 	public void paint (Graphics g){
 		g.drawImage(sprite, x, y, null);
 	}
-	//accessor method to determine if in benign mode (eatable or not)
+	//accessor method to determine if in benign mode (edible or not)
 	public boolean getBenignMode(){
 		
 		return benignmode;
@@ -207,6 +207,9 @@ public class Ghost {
 	 	            return true;
 	        	
 	        	}
+	        	 
+	        	 
+	        	 
 	        	
 	        	return true;
 	        }
@@ -220,4 +223,12 @@ public class Ghost {
 	         }
 	        }
 	    }
+	public void flash(int timer) {
+		if(timer%20==0){
+			sprite=ghostBenignInvert;
+		}else if(timer%5==0){
+			sprite=ghostBenign;
+		}
+		
+	}
 }

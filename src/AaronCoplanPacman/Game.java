@@ -175,10 +175,12 @@ public class Game extends JPanel{
 			}
 			
 		}
-			if(benignmodetimer >= 410){
+			if(benignmodetimer >= 380){
 				
 				System.out.println("FLASH");
-				//ghosts flash
+				for(int x=0;x<ghosts.size();x++){
+					ghosts.get(x).flash(benignmodetimer);
+				}
 			}
 			if(benignmodetimer >= 500){
 			
