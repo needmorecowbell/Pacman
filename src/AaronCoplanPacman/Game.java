@@ -68,10 +68,10 @@ public class Game extends JPanel{
 	public static void start(){
 		hasnotcollided= true;
 		
-		ghosts.add(new Ghost("Adam M", 50,50, Color.pink,1,-1));
-		ghosts.add(new Ghost("Aaron", 250, 150, Color.cyan,-1,1));
-		ghosts.add(new Ghost("Adam Ack", 50, 200, Color.magenta,1,1));
-		ghosts.add(new Ghost("Eugene Crabs", 250, 250, Color.green, -1, -1));
+		ghosts.add(new Ghost("Adam M", 50,50, "pink",1,-1));
+		ghosts.add(new Ghost("Aaron", 250, 150, "teal",-1,1));
+		ghosts.add(new Ghost("Adam Ack", 50, 200, "red",1,1));
+		ghosts.add(new Ghost("Eugene Crabs", 250, 250, "orange", -1, -1));
 		pills.add(new Pill(50, 410));
 		pills.add(new Pill(50, 30));
 		pills.add(new Pill(410, 30));
