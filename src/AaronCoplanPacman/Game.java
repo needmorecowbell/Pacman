@@ -72,20 +72,20 @@ public class Game extends JPanel{
 		ghosts.add(new Ghost("Aaron", 250, 150, Color.cyan,-1,1));
 		ghosts.add(new Ghost("Adam Ack", 50, 200, Color.magenta,1,1));
 		ghosts.add(new Ghost("Eugene Crabs", 250, 250, Color.green, -1, -1));
-		pills.add(new Pill(30, 410));
-		pills.add(new Pill(30, 30));
-		pills.add(new Pill(420, 30));
-		pills.add(new Pill(420, 410));
+		pills.add(new Pill(50, 410));
+		pills.add(new Pill(50, 30));
+		pills.add(new Pill(410, 30));
+		pills.add(new Pill(410, 410));
 		coverup.add(new PaintOver(75, 23, 6, 34));
 		coverup.add(new PaintOver(41, 57, 34, 6));
 		coverup.add(new PaintOver(395, 23, 6, 34));
 		coverup.add(new PaintOver(401, 57, 34, 6));
 		
 		int dotsy = 34;
-		//increment x location by 39 for each pill.
-		while (dotsy <= 420){
+		//increment x location by 40 for each pill.
+		while (dotsy <= 430){
 		
-		for (int start = 62; start < 420; start += 38){
+		for (int start = 55; start < 438; start += 40){
 			dots.add(new Dots(start, dotsy));
 		}
 		
