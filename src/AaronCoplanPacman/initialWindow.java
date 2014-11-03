@@ -65,7 +65,7 @@ public class initialWindow {
 		menuframe.setVisible(true);
 		
 		while(open){
-			System.out.println("open");
+			//System.out.println("open");
 			
 		}
 		System.out.println("closed");
@@ -157,7 +157,7 @@ public class initialWindow {
 			try {
 				playerlist = io.readFromFile();
 			} catch (FileNotFoundException e1) {
-				System.out.println("Error when reading in from file.");
+				JOptionPane.showMessageDialog(null, "Error when reading in from file.", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 			int size = playerlist.size();
 			
