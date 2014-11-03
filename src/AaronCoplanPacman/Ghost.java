@@ -114,7 +114,7 @@ public class Ghost {
 		this.benignmode = benignmode;
 		
 		if(benignmode){
-			sprite = ghostBenign;
+			sprite=ghostBenign;
 		}
 		else{
 			sprite=ghost;
@@ -122,13 +122,13 @@ public class Ghost {
 	}
 	//method to paint in the center of the map for after it is eaten
 	public void paintincenter(){
-		
+		sprite=ghost;
+		speed=2;
 		x = repaintx;
 		y = repainty;
 	}
 	//paint method sets the color and paints it in its x, y location
 	public void paint (Graphics g){
-		
 		g.drawImage(sprite, x, y, null);
 	}
 	//accessor method to determine if in benign mode (eatable or not)
