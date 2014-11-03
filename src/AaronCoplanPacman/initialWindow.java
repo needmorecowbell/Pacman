@@ -3,6 +3,8 @@ package AaronCoplanPacman;
 import javax.swing.*;
 
 
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +19,7 @@ public class initialWindow {
 	 JFrame scoresframe = new JFrame("");
 	 JButton btnAddVoice= new JButton("Add/Remove Voice");
 	 boolean open = true;
+	 boolean voiceBtnClicked= false;
 	
 
 	public initialWindow(){}
@@ -79,6 +82,7 @@ public class initialWindow {
 			 boolean open = true;
 			 
 			 
+			 
 				open = true;
 				settingframe.setTitle("Pacman Settings");
 				settingframe.setResizable(false);
@@ -114,7 +118,13 @@ public class initialWindow {
 	}
 	private class addVoice implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			btnAddVoice.setBackground(Color.blue);
+			voiceBtnClicked= !voiceBtnClicked;
+			if(voiceBtnClicked){
+				btnAddVoice.setBackground(Color.green);
+			}else{
+				btnAddVoice.setBackground(null);
+			}
+			
 			
 		}
 	}
