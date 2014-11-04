@@ -1,9 +1,9 @@
-package AaronCoplanPacman;
+package copAckMusPacman;
 
 public class Player {
 
-	private String name;
-	private int score;
+	private String name;//user
+	private int score;//score of game
 	
 	public Player(String name, int score){
 		
@@ -21,7 +21,8 @@ public class Player {
 		return score;
 	}
 	
-	public String printPlayer(){
+	@Override
+	public String toString(){
 		
 		return("Name: " + name + ", Score: " + score);
 	}

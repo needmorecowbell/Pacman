@@ -1,4 +1,4 @@
-package AaronCoplanPacman;
+package copAckMusPacman;
 
 import javax.swing.*;
 
@@ -65,7 +65,7 @@ public class initialWindow {
 		menuframe.setVisible(true);
 		
 		while(open){
-			//System.out.println("open");
+			System.out.println("open");
 			
 		}
 		System.out.println("closed");
@@ -167,7 +167,7 @@ public class initialWindow {
 			for (int start = 0; start < size; start++){
 				
 				Player player = playerlist.get(start);
-				String playerinfo = player.printPlayer();
+				String playerinfo = player.toString();
 				JLabel label = new JLabel(playerinfo);
 				cont.add(label);
 				

@@ -1,12 +1,12 @@
-package AaronCoplanPacman;
+package copAckMusPacman;
 
 import java.awt.*;
 
 public class VerticalWalls {
 
-	int width = 10;
+	int width = 10;//sets block dimensions
 	int height = (160 * Game.SCALE);
-	int x = 0;
+	int x = 0;//sets position in game
 	int y = 0;
 	
 	
@@ -19,7 +19,7 @@ public class VerticalWalls {
 	public void paint(Graphics g){
 		
 		g.setColor(Color.BLACK);
-		g.fillRect(x, y, width, height);
+		g.fillRect(x, y, width, height);//draws a black block at x,y
 		
 	}
 	
