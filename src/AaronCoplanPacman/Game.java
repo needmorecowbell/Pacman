@@ -190,10 +190,10 @@ public class Game extends JPanel{
 					for(int X = 0; X < ghosts.size(); X++){
 						ghosts.get(X).setBenignMode(true);
 					}
-					
 				}
 			}
 			
+			//checks to see if pac is colliding with a dot. if dot is eaten, 10 is added to score and the dot is removed from the arraylist
 			for (int x = 0; x < dots.size(); x++){
 				
 				if (dots.get(x).dotEaten(ball) == false){
@@ -202,23 +202,24 @@ public class Game extends JPanel{
 				}
 			}
 			
+			//if all the ghosts are eaten, it checks the dead ghosts to see if in benign mode and if so, adds 1 to the benign mode timer
 			if (ghosts.size() == 0){
 				if(deadghosts.get(0).getBenignMode()){
 					benignmodetimer++;
 				}
 			}
-			
+			//if they are not all eaten, it checks to see if the alive ones are in benign mode and if so, adds 1 to the benign mode timer
 			else{	
-			try{	
-			if (ghosts.get(0).getBenignMode() || deadghosts.get(0).getBenignMode()){
-			benignmodetimer++;
-			}
-			}
-			catch (IndexOutOfBoundsException e){
-				
+				try{	
+					if (ghosts.get(0).getBenignMode() || deadghosts.get(0).getBenignMode()){
+						benignmodetimer++;
+					}
+				}catch (IndexOutOfBoundsException e){
+					//does nothing
+				}
 			}
 			
-		}
+			//eatable/benign ghosts flash when they are about to switch back to normal ghosts
 			if(benignmodetimer >= 380){
 				
 				System.out.println("FLASH");
@@ -226,6 +227,8 @@ public class Game extends JPanel{
 					ghosts.get(x).flash(benignmodetimer);
 				}
 			}
+			
+			//if the benign mode timer reaches 500m the ghosts switch back to regular and any eaten ghosts get repainted in the center
 			if(benignmodetimer >= 500){
 			
 				for (int x = 0; x<ghosts.size(); x++){
@@ -243,7 +246,9 @@ public class Game extends JPanel{
 			}
 			
 		}
-		
+		/* (this is outside the while loop)
+		 * if you got a highscore, it will ask you for your name, otherwise it just rewrites the old highscores
+		 */
 		InputOutput4Scores io = new InputOutput4Scores();
 		try {
 			io.writehighscores(score);
@@ -252,6 +257,7 @@ public class Game extends JPanel{
 		}
 	}
 	
+	//method for ghosts collisions with outside walls which allows them to bounce
 	public static void ghostcollisions(Ghost g, int ghostX, int ghostY){
 		
 		if (!((ghostX > 10) && (ghostX < ((160 * 3) - 45)) && (ghostY > 10) && (ghostY < ((160 * 3) - 68)))){
@@ -272,11 +278,11 @@ public class Game extends JPanel{
 			if (!(ghostY < ((160 * 3) - 68))){
 				System.out.println("Collision with bottom wall.");
 				g.setyvelo(-g.getyvelo());
-			}
-			
+			}		
 		}
 	}
-
+	
+	//method for pacman's collisions with outside walls which makes it stop
 	public static void ballcollisions(){
 		
 		if (!((ballx > 10) && (ballx < ((160 * 3) - 45)) && (bally > 10) && (bally < ((160 * 3) - 68))))
@@ -298,10 +304,9 @@ public class Game extends JPanel{
 			System.out.println("Collision with bottom wall.");
 			ball.movebally(-1);
 		}
-		
-
 	}
 		
+	//paint method which paints all visual objects on the map
 	@Override
 	public void paint(Graphics g){
 		
@@ -324,15 +329,16 @@ public class Game extends JPanel{
 		ball.paint(g2d);
 	}
 
+	//move method which has ghosts and ball move
 	private void move(){
 		
 		ball.move(direction, movelrud);
 		for(int x=0;x<ghosts.size();x++){
 			ghosts.get(x).move(ghostmove,ghosts.get(x).getxvelo(),ghosts.get(x).getyvelo());
 		}
-		
 	}
 	
+	//key pressed method handles what happens for each keypress(left, right, up, down)
 	public void KeyPressed(KeyEvent k) 
     {
         if(k.getKeyCode()==KeyEvent.VK_LEFT){
