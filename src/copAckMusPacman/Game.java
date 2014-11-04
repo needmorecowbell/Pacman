@@ -233,7 +233,12 @@ public class Game extends JPanel{
 			
 				for (int x = 0; x<ghosts.size(); x++){
 					ghosts.get(x).setBenignMode(false);
+					try{
 					deadghosts.get(x).setBenignMode(false);
+					} catch (IndexOutOfBoundsException e){
+						//do nothing
+					}
+					
 				}
 				
 				for(int x=0; x<deadghosts.size(); x++){
