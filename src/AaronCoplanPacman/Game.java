@@ -17,12 +17,14 @@ public class Game extends JPanel{
 	private static final long serialVersionUID = 1L;
 	public static final int SCALE = 3;	
 	
+	//declares pacman and outside walls
 	public static Pacman ball = new Pacman();
 	public VerticalWalls leftwall = new VerticalWalls(0, 0);
 	public VerticalWalls rightwall = new VerticalWalls(((160 * SCALE) - 15), 0);
 	public HorizontalWalls topwall = new HorizontalWalls(0, 0);
 	public HorizontalWalls bottomwall = new HorizontalWalls(0, ((160 * SCALE) - 38));
 	
+	//sets up arrays for the ghosts, deadghosts, pills, dots, corridors, and coverups
 	public static boolean ghostmove = true;
 	public static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
 	public static ArrayList<Ghost> deadghosts = new ArrayList<Ghost>();
@@ -187,6 +189,7 @@ public class Game extends JPanel{
 			
 				for (int x = 0; x<ghosts.size(); x++){
 					ghosts.get(x).setBenignMode(false);
+					deadghosts.get(x).setBenignMode(false);
 				}
 				
 				for(int x=0; x<deadghosts.size(); x++){
