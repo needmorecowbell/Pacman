@@ -33,27 +33,40 @@ public class Game extends JPanel{
 	public static ArrayList<Corridor> corridors = new ArrayList<Corridor>();
 	public static ArrayList<PaintOver> coverup = new ArrayList<PaintOver>();
 	
-
+	//data for width of the JFrame and height of the JFrame
 	public static final int WIDTH = (160 * SCALE);
 	public static final int HEIGHT = (160 * SCALE);
+
+	//boolean for whether or not pac is moving
 	public boolean running = false;
+	
+	//ints for pacmans x, y location as well as int for left, right, up, down, and char for direction
 	static int ballx,bally;
 	public int movelrud = 0;
 	public static char direction = 0;
+	
+	//sets up the JFrame
 	public static JFrame frame = new JFrame();
+	
+	//ints for the score and benign (eatable) mode timer
 	public static int score = 0;
 	public static int benignmodetimer = 0;
+	
+	//Name of the JFrame is Pacman
 	public static final String NAME = "Pacman";
+	
+	//boolean for whether or not the ghosts have eaten pacman
 	public static boolean hasnotcollided = true;
+	
+	//sets up the corridors
 	public static Corridor corridortop = new Corridor(235, 37, 400, 40);//235 is center of x value
 	public static Corridor corridorbottom = new Corridor(235, 417, 400, 40);//recentered corridor values
 	public static Corridor corridorleft = new Corridor(55, 227, 40, 420);
 	public static Corridor corridorright = new Corridor(415, 227, 40, 420);
 	
-	
-	
-	
+	//Constructor for the Game 
 	public Game(){
+		//Adds key listener so pacman is controlled using arrow keys
 		addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -67,27 +80,37 @@ public class Game extends JPanel{
         setFocusable(true);  
 	}
 	
-	
+	//this is the game method which runs the majority of the game
 	public static void start(){
+		/*
+		 * sets boolean hasnotcollided(which is for collisions between pacman and the ghosts) equal to true, 
+		 * meaning the game will run
+		*/
 		hasnotcollided= true;
 		
+		//adds four ghosts, each with different info, to the arraylist of ghosts 
 		ghosts.add(new Ghost("Adam M", 50,50, "pink",1,-1));
 		ghosts.add(new Ghost("Aaron", 250, 150, "teal",-1,1));
 		ghosts.add(new Ghost("Adam Ack", 50, 200, "red",1,1));
 		ghosts.add(new Ghost("Eugene Crabs", 250, 250, "orange", -1, -1));
+		
+		//adds four pills, one in each corner, to the arraylist of pills
 		pills.add(new Pill(50, 410));
 		pills.add(new Pill(50, 30));
 		pills.add(new Pill(410, 30));
 		pills.add(new Pill(410, 410));
+		
+		//adds eight coverups, two per corner, in order to cover the extra rectangles, to the arraylist of coverups
 		coverup.add(new PaintOver(75, 23, 6, 34));
 		coverup.add(new PaintOver(41, 57, 34, 6));
 		coverup.add(new PaintOver(395, 23, 6, 34));
 		coverup.add(new PaintOver(401, 57, 34, 6));
 		
+		//starting y location of the dots
 		int dotsy = 34;
 		//increment x location by 40 for each pill.
 		while (dotsy <= 430){
-		
+		//this while loop adds all the dots to the map
 		for (int start = 55; start < 438; start += 40){
 			dots.add(new Dots(start, dotsy));
 		}
@@ -96,8 +119,13 @@ public class Game extends JPanel{
 		}
 		
 		
-		
+		//calls the constructor for a new game, which sets up the keylistener
 		Game game = new Game();		
+		
+		/*
+		 * sets up frame with the following:
+		 * title, exitonclose, sets size, setresizable is false, sets visible true, adds the game to the frame, and packs
+		 */
 		
 		frame = new JFrame(NAME);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,38 +136,51 @@ public class Game extends JPanel{
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
-		
+		//Game loops that runs until the pacman collides with a ghost
 		while (hasnotcollided){
-
+			
+			//the next line does nothing b/c it returns a string but it is not assigned to anything
 			ball.square1(corridortop, corridorleft);
+			//the above line does nothing b/c it returns a string but it is not assigned to anything
+			
+			//the game moves and repaints
 			game.move();
 			game.repaint();
+			
+			//it sets the title as the score
 			frame.setTitle(NAME + ": " + score);
+			
+			//thread sleeps for ten milliseconds
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
+			//sets the ball xlocation equal to ballx and ball ylocation equal to bally
 			ballx = ball.getx();
 			bally = ball.gety();
 		
-		
+			//calls the ball collisions method, which handles collisions with the four outside walls and ensures pac stays inside them
 			ballcollisions();
 			
+			//calls the ghostcollisions method for each of the ghosts in the ghosts array, which handles bouncing off the outside walls
 			for(int x=0;x<ghosts.size();x++){
 				ghostcollisions(ghosts.get(x), ghosts.get(x).getx(), ghosts.get(x).gety());
 			
 			}
 			
-			
-			
+			//for each of the ghosts it checks to see if the ghost has collided with pacman
 			for(int x=0;x<ghosts.size();x++){
 				hasnotcollided=ghosts.get(x).collision(ball, ghosts.get(x));		
 				if(hasnotcollided==false){break;}
 			}	
 			
-			
-			
+			/*checks to see if pac is colliding with a pill: 
+			 * if a pill is eaten:
+			 * 50 is added to the score, the pill is removed from the map, the benign mode timer is set to zero
+			 * all the ghosts in the ghosts arraylist are set into benign mode when the pill is eaten
+			 */
 			for (int x=0; x<pills.size();x++){
 				if(pills.get(x).pillEaten(ball) == false){
 					score += 50;
