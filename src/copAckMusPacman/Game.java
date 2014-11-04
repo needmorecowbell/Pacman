@@ -242,8 +242,9 @@ public class Game extends JPanel{
 				}
 				
 				for(int x=0; x<deadghosts.size(); x++){
-					deadghosts.get(x).paintincenter();
+					
 					ghosts.add(deadghosts.get(x));
+					ghosts.get(x).paintincenter();
 				}
 				
 				deadghosts.clear();
