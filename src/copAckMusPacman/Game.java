@@ -1,5 +1,11 @@
 package copAckMusPacman;
 
+/*
+
+WE ARE STILL HAVING TROUBLE WITH BENIGN GHOST MODE
+
+*/
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
