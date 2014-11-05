@@ -230,7 +230,7 @@ public class Game extends JPanel{
 			
 			//if the benign mode timer reaches 500m the ghosts switch back to regular and any eaten ghosts get repainted in the center
 			if(benignmodetimer >= 500){
-			
+			//THERE IS A GLITCH WITH THE RESPAWN!
 				for (int x = 0; x<ghosts.size(); x++){
 					ghosts.get(x).setBenignMode(false);
 					try{
