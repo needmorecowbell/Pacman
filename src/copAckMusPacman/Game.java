@@ -344,6 +344,23 @@ public class Game extends JPanel{
 		}
 	}
 	
+	public void stayInCorridors(){
+		
+		String square1 = ball.square1(corridortop, corridorleft);
+		if(square1.equals("upperleft")){
+			//disable the left and up keys: only allow the right and down keys to work
+		}
+		String horz = ball.horizontalcorridorClash(corridortop);
+		if(horz.equals("horizontal")){
+			//disable the up down keys
+		}
+		String vert = ball.verticalcorridorClash(corridorleft);
+		if(vert.equals("vertical")){
+			//disable the left right keys
+		}
+		
+	}
+	
 	//key pressed method handles what happens for each keypress(left, right, up, down)
 	public void KeyPressed(KeyEvent k) 
     {
