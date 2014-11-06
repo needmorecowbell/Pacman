@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
+//called in driver class
+//Most of this is pretty self explanatory, credit windows and start game etc
 public class initialWindow {
 	
 	 JFrame menuframe = new JFrame("");
@@ -64,11 +65,12 @@ public class initialWindow {
 		
 		menuframe.setVisible(true);
 		
-		while(open){
-			System.out.println("open");
+		//Not necessary anymore
+		//while(open){
+			//System.out.println("open");
 			
-		}
-		System.out.println("closed");
+		//}
+		//System.out.println("closed");
 		Game.start();
 	
 	}
@@ -238,6 +240,7 @@ public class initialWindow {
 		
 		public void actionPerformed(ActionEvent e){
 			
+			//Kill active process from other frams no longer needed when the menu button is pressed
 			scoresframe.dispose();
 			creditsframe.dispose();
 			menuframe.setVisible(true);

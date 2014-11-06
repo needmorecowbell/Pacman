@@ -56,7 +56,7 @@ public class InputOutput4Scores {
 		return name;
 	}
 	
-	public ArrayList<Player> figureoutifHighScore(int score) throws IOException{
+	public ArrayList<Player> figureoutifHighScore(int score) throws IOException{//When time comes, need a better way to accomplish this
 		
 		ArrayList<Player> players = readFromFile();
 		System.out.println(players.get(0).getName());
@@ -107,7 +107,7 @@ public class InputOutput4Scores {
 		String Score = "";
 		int score = 0;
 		
-		File file = new File("src/scoreRes/ScoreList");
+		File file = new File("src/scoreRes/ScoreList");//Should fix e drive problem mentioned at beginning
 		Scanner inputFile = new Scanner(file);
 		
 		while (inputFile.hasNext()){

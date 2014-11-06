@@ -9,14 +9,15 @@ import javax.imageio.ImageIO;
 
 public class Pacman {
 	
-	int width = 30, height = 30;
-	int x = 220, y = 24;
+	int width = 30, height = 30;//Radius = 15
+	int x = 220, y = 24;//positions pacman in corridor at start
 	private int cx = 0, cy = 0;
 	
 	BufferedImage pacmanRight,pacmanLeft,pacmanDown,pacmanUp, sprite;
 	public Pacman(){
 		
 		try {
+			//loads images for each direction of pacman
 			pacmanRight=ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanRight.png"));
 			sprite = pacmanRight;
 			pacmanLeft= ImageIO.read(this.getClass().getClassLoader().getResource("res/pacmanLeft.png"));
@@ -108,10 +109,10 @@ public class Pacman {
 	
 		y += changey;
 	}
-	
+	//40 is equal to width of corridor, so whenever 40 is used, it is adjusting for that
 	public String horizontalcorridorClash(Corridor a){
-		
-		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.horizontalcorridorBottom()) && (getcx() > a.corridorLeft() + 40) && (getcx() < a.corridorRight() - 40)){
+		//checks to see if pacman is within bounds of corridor entered (a)
+		if((getcy() > a.horizontalcorridorTop()) && (getcy() + (height/2) < a.horizontalcorridorBottom()) && (getcx() > a.corridorLeft() + 40) && (getcx() < a.corridorRight() - 40)){
 			return "horizontal";
 		}
 		else{
@@ -120,8 +121,8 @@ public class Pacman {
 	}
 	
 	public String verticalcorridorClash(Corridor a){
-		
-		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() - 40) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		//checks to see if pacman is within bounds of corridor entered (a)
+		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + (height/2) < a.verticalcorridorBottom() - 40) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
 			return "vertical";
 		}
 		else{
@@ -130,7 +131,7 @@ public class Pacman {
 	}
 	
 	public String square1(Corridor hor, Corridor vert){
-		
+		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
 		if (getcy() < hor.horizontalcorridorBottom() && getcx() < vert.corridorRight()){
 			
 			return "upperleft";
@@ -139,6 +140,7 @@ public class Pacman {
 			return null;
 		}
 	}
-	
+	//need to implement a method to deal with all of this at 1 time, then game class will call that method
+	//before determining which directional keys are able to be used.
 
 }

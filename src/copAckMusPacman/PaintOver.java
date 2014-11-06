@@ -2,7 +2,7 @@ package copAckMusPacman;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+//small method to paint over the overlap of the corridors, works perfectly for now
 public class PaintOver {
 
 	private int x, y, width, height;

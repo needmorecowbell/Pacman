@@ -1,6 +1,8 @@
 package copAckMusPacman;
 
 import java.awt.*;
+//Currently, this is only used for the ghosts as they have not yet been incorporated into the corridor system
+//Once we get that running, this class can be removed
 
 public class HorizontalWalls {
 
