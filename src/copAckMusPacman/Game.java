@@ -390,7 +390,7 @@ public class Game extends JPanel{
 			value = 3;
 		}
 		
-		
+		//we are gonna have some trouble with right side turning
 	}
 	
 	//key pressed method handles what happens for each keypress(left, right, up, down)
