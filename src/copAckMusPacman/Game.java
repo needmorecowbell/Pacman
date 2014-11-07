@@ -360,16 +360,33 @@ public class Game extends JPanel{
 			value = 1;
 		}
 		
-		String vert = ball.verticalcorridorClash(corridorleft);
-		if(vert.equals("vertical")){
+		String square2 = ball.square2(corridortop, corridorright);
+		if(square2.equals("upperright")){
+			//disable the right and up keys
+			value = 5;
+		}
+		
+		String leftvert = ball.verticalcorridorClash(corridorleft);
+		if(leftvert.equals("vertical")){
 			//disable the left right keys
 			value = 2;
 		}
 		
-		String horz = ball.horizontalcorridorClash(corridortop);
-		if(horz.equals("horizontal")){
+		String rightvert = ball.verticalcorridorClash(corridorright);
+		if(rightvert.equals("vertical")){
+			//disable the left right keys
+			value = 2;
+		}
+		
+		String tophorz = ball.horizontalcorridorClash(corridortop);
+		if(tophorz.equals("horizontal")){
 			//disable the up down keys
-			
+			value = 3;
+		}
+		
+		String bottomhorz = ball.horizontalcorridorClash(corridorbottom);
+		if(bottomhorz.equals("horizontal")){
+			//disable the up down keys
 			value = 3;
 		}
 		
@@ -385,13 +402,13 @@ public class Game extends JPanel{
         	direction = 'x';
         	movelrud = 0;
         }
-        if(k.getKeyCode()==KeyEvent.VK_RIGHT &&(value != 2)){
+        if(k.getKeyCode()==KeyEvent.VK_RIGHT &&(value != 2)&&(value != 5)){
         	
         	ball.spriteDirection('r');
         	direction = 'x';
         	movelrud = 1;
         }
-        if(k.getKeyCode()==KeyEvent.VK_UP && (value !=3) && (value !=1)){
+        if(k.getKeyCode()==KeyEvent.VK_UP && (value !=3) && (value !=1)&&(value != 5)){
         	
         	
         		

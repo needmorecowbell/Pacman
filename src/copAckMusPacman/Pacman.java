@@ -137,8 +137,17 @@ public class Pacman {
 		if (getcy() < hor.horizontalcorridorBottom() && getcx() < vert.corridorRight()){
 			
 			return "upperleft";
+		}else{
+			return "";
 		}
-		else{
+	}
+	//the following method(square2) is not working properly
+	public String square2(Corridor hor, Corridor vert){
+		
+		if(getcy() < hor.horizontalcorridorBottom() && getcx() > vert.corridorLeft()){
+			System.out.println("in upper right square!!!");
+			return "upperright";
+		}else{
 			return "";
 		}
 	}
