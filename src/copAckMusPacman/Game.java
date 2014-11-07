@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 //
 public class Game extends JPanel{
 	//THIS IS A TEST
+	static int value = 0;
 	private static final long serialVersionUID = 1L;
 	public static final int SCALE = 3;	
 	
@@ -207,6 +208,7 @@ public class Game extends JPanel{
 					dots.remove(x);
 				}
 			}
+			stayInCorridors();
 			
 			//if all the ghosts are eaten, it checks the dead ghosts to see if in benign mode and if so, adds 1 to the benign mode timer
 			if (ghosts.size() == 0){
@@ -350,49 +352,60 @@ public class Game extends JPanel{
 		}
 	}
 	
-	public void stayInCorridors(){
-		
+	public static void stayInCorridors(){//This is going to be a huge method, has to check for every corridor
+		value = 0;
 		String square1 = ball.square1(corridortop, corridorleft);
 		if(square1.equals("upperleft")){
 			//disable the left and up keys: only allow the right and down keys to work
+			value = 1;
 		}
-		String horz = ball.horizontalcorridorClash(corridortop);
-		if(horz.equals("horizontal")){
-			//disable the up down keys
-		}
+		
 		String vert = ball.verticalcorridorClash(corridorleft);
 		if(vert.equals("vertical")){
 			//disable the left right keys
+			value = 2;
 		}
+		
+		String horz = ball.horizontalcorridorClash(corridortop);
+		if(horz.equals("horizontal")){
+			//disable the up down keys
+			
+			value = 3;
+		}
+		
 		
 	}
 	
 	//key pressed method handles what happens for each keypress(left, right, up, down)
 	public void KeyPressed(KeyEvent k) 
     {
-        if(k.getKeyCode()==KeyEvent.VK_LEFT){
+        if(k.getKeyCode()==KeyEvent.VK_LEFT && (value != 2)&&(value !=1)){
         	
             ball.spriteDirection('l');	
         	direction = 'x';
         	movelrud = 0;
         }
-        if(k.getKeyCode()==KeyEvent.VK_RIGHT){
+        if(k.getKeyCode()==KeyEvent.VK_RIGHT &&(value != 2)){
         	
         	ball.spriteDirection('r');
         	direction = 'x';
         	movelrud = 1;
         }
-        if(k.getKeyCode()==KeyEvent.VK_UP){
-    
+        if(k.getKeyCode()==KeyEvent.VK_UP && (value !=3) && (value !=1)){
+        	
+        	
+        		
             	ball.spriteDirection('u');
             	direction = 'y';
             	movelrud = 1;
+        	
         }
-        if(k.getKeyCode()==KeyEvent.VK_DOWN){
-      
+        if(k.getKeyCode()==KeyEvent.VK_DOWN && (value !=3)){
+        	
             	ball.spriteDirection('d');
             	direction = 'y';
             	movelrud = 0;
+        	
             	
         }
         if(k.getKeyCode()==KeyEvent.VK_SPACE){

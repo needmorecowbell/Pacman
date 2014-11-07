@@ -112,21 +112,23 @@ public class Pacman {
 	//40 is equal to width of corridor, so whenever 40 is used, it is adjusting for that
 	public String horizontalcorridorClash(Corridor a){
 		//checks to see if pacman is within bounds of corridor entered (a)
-		if((getcy() > a.horizontalcorridorTop()) && (getcy() + (height/2) < a.horizontalcorridorBottom()) && (getcx() > a.corridorLeft() + 40) && (getcx() < a.corridorRight() - 40)){
+		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.horizontalcorridorBottom()) && (getcx() > a.corridorLeft() + 40) && (getcx() < a.corridorRight() - 40)){
+			
+			//System.out.println("it is in horz");
 			return "horizontal";
 		}
 		else{
-			return null;
+			return "";
 		}
 	}
 	
 	public String verticalcorridorClash(Corridor a){
 		//checks to see if pacman is within bounds of corridor entered (a)
-		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + (height/2) < a.verticalcorridorBottom() - 40) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() - 40) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
 			return "vertical";
 		}
 		else{
-			return null;
+			return "";
 		}
 	}
 	
@@ -137,7 +139,7 @@ public class Pacman {
 			return "upperleft";
 		}
 		else{
-			return null;
+			return "";
 		}
 	}
 	//need to implement a method to deal with all of this at 1 time, then game class will call that method
