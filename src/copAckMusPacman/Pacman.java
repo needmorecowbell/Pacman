@@ -135,18 +135,16 @@ public class Pacman {
 	public String square1(Corridor hor, Corridor vert){
 		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
 		if (getcy() < hor.horizontalcorridorBottom() && getcx() < vert.corridorRight()){
-			
+			System.out.println("in upper left square");
 			return "upperleft";
 		}else{
 			return "";
 		}
 	}
-	//the following method(square2) is not working properly
-	public String square2(Corridor hor, Corridor vert){
-		
-		if(getcy() < hor.horizontalcorridorBottom() && getcx() > vert.corridorLeft()){
-			System.out.println("in upper right square!!!");
-			return "upperright";
+	public String square2(Corridor hor, Corridor vert){ 
+		if(getcy() < hor.horizontalcorridorTop() && getcx() < vert.corridorRight()){
+			System.out.println("in bottom left square!!!");
+			return "bottomleft";
 		}else{
 			return "";
 		}

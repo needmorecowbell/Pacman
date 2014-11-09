@@ -354,17 +354,6 @@ public class Game extends JPanel{
 	
 	public static void stayInCorridors(){//This is going to be a huge method, has to check for every corridor
 		value = 0;
-		String square1 = ball.square1(corridortop, corridorleft);
-		if(square1.equals("upperleft")){
-			//disable the left and up keys: only allow the right and down keys to work
-			value = 1;
-		}
-		
-		String square2 = ball.square2(corridortop, corridorright);
-		if(square2.equals("upperright")){
-			//disable the right and up keys
-			value = 5;
-		}
 		
 		String leftvert = ball.verticalcorridorClash(corridorleft);
 		if(leftvert.equals("vertical")){
@@ -390,25 +379,37 @@ public class Game extends JPanel{
 			value = 3;
 		}
 		
+		String square1 = ball.square1(corridortop, corridorleft);
+		if(square1.equals("upperleft")){
+			//disable the left and up keys: only allow the right and down keys to work
+			value = 1;
+		}
+		
+		String square2 = ball.square2(corridorbottom, corridorleft);
+		if(square2.equals("bottomleft")){
+			//disable the down and left keys
+			value = 5;
+		}
+		
 		//we are gonna have some trouble with right side turning
 	}
 	
 	//key pressed method handles what happens for each keypress(left, right, up, down)
 	public void KeyPressed(KeyEvent k) 
     {
-        if(k.getKeyCode()==KeyEvent.VK_LEFT && (value != 2)&&(value !=1)){
+        if(k.getKeyCode()==KeyEvent.VK_LEFT && (value != 2)&&(value !=1)&&(value !=5)){
         	
             ball.spriteDirection('l');	
         	direction = 'x';
         	movelrud = 0;
         }
-        if(k.getKeyCode()==KeyEvent.VK_RIGHT &&(value != 2)&&(value != 5)){
+        if(k.getKeyCode()==KeyEvent.VK_RIGHT &&(value != 2)){
         	
         	ball.spriteDirection('r');
         	direction = 'x';
         	movelrud = 1;
         }
-        if(k.getKeyCode()==KeyEvent.VK_UP && (value !=3) && (value !=1)&&(value != 5)){
+        if(k.getKeyCode()==KeyEvent.VK_UP && (value !=3) && (value !=1)){
         	
         	
         		
@@ -417,7 +418,7 @@ public class Game extends JPanel{
             	movelrud = 1;
         	
         }
-        if(k.getKeyCode()==KeyEvent.VK_DOWN && (value !=3)){
+        if(k.getKeyCode()==KeyEvent.VK_DOWN && (value !=3)&&(value != 5)){
         	
             	ball.spriteDirection('d');
             	direction = 'y';
