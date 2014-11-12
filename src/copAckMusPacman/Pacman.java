@@ -124,7 +124,7 @@ public class Pacman {
 	
 	public String verticalcorridorClash(Corridor a){
 		//checks to see if pacman is within bounds of corridor entered (a)
-		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() - 40) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() -20) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
 			return "vertical";
 		}
 		else{
@@ -134,7 +134,7 @@ public class Pacman {
 	
 	public String square1(Corridor hor, Corridor vert){
 		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
-		if (getcy() < hor.horizontalcorridorBottom() && getcx() < vert.corridorRight()){
+		if (getcy() < hor.horizontalcorridorBottom()-30 && getcx() < vert.corridorRight()-30){
 			System.out.println("in upper left square");
 			return "upperleft";
 		}else{
@@ -142,7 +142,7 @@ public class Pacman {
 		}
 	}
 	public String square2(Corridor hor, Corridor vert){ 
-		if(getcy() < hor.horizontalcorridorTop() && getcx() < vert.corridorRight()){
+		if(getcy() > hor.horizontalcorridorTop() && getcx() < vert.corridorRight()-30){
 			System.out.println("in bottom left square!!!");
 			return "bottomleft";
 		}else{
