@@ -113,6 +113,11 @@ public class Game extends JPanel{
 		coverup.add(new PaintOver(41, 57, 34, 6));
 		coverup.add(new PaintOver(395, 23, 6, 34));
 		coverup.add(new PaintOver(401, 57, 34, 6));
+		coverup.add(new PaintOver(401, 397, 34, 6));
+		coverup.add(new PaintOver(41, 397, 34, 6));
+		coverup.add(new PaintOver(75, 403, 6, 34));
+		coverup.add(new PaintOver(395, 403, 6, 34));
+		
 		
 		//starting y location of the dots
 		int dotsy = 34;

@@ -65,12 +65,12 @@ public class initialWindow {
 		
 		menuframe.setVisible(true);
 		
-		//Not necessary anymore
-		//while(open){
+		
+		while(open){
 			//System.out.println("open");
 			
-		//}
-		//System.out.println("closed");
+		}
+		System.out.println("closed");
 		Game.start();
 	
 	}
