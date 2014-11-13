@@ -20,7 +20,8 @@ public class GhostWithAI {
 	String name = "";
 	BufferedImage ghost,ghostBenign,ghostBenignInvert,sprite;
 	
-	boolean lmove = false, rmove = false, dmove = false, umove = false;
+	
+	boolean lmove = false, rmove = false, dmove = false, umove = false, decidelr = true, decideud = true;
 	
 	//constructor naming ghost, giving it location, color, and speeds
 	public GhostWithAI(String name, int x, int y, String c){
@@ -62,7 +63,6 @@ public class GhostWithAI {
 			e.printStackTrace();
 		}
 		
-		this.rmove = true;
 		
 	}
 	//constructor for everything but name
@@ -105,7 +105,6 @@ public class GhostWithAI {
 			e.printStackTrace();
 		}
 
-		this.rmove = true;
 	}
 	//turns benign mode (edibility) on or off
 	public void setBenignMode(boolean benignmode){
@@ -135,8 +134,66 @@ public class GhostWithAI {
 		
 		return benignmode;
 	}
+	public void decideMoveDirection(){
+		
+		if(horizontalcorridorClash(Game.corridormiddle).equals("horizontal")){
+			System.out.println("in horizontal middle corridor");
+			umove = false;
+			dmove = false;
+			
+			if(decidelr){
+				if(Math.random() < 0.49){
+					rmove = false;
+					lmove = true;
+					decidelr = false;
+				}else{
+					lmove = false;
+					rmove = true;
+					decidelr = false;
+				}
+			}
+		}
+		
+		if(verticalcorridorClash(Game.corridorright).equals("vertical")){
+			System.out.println("in vertical right corridor");
+			lmove = false;
+			rmove = false;
+			
+			if(decideud){
+				if(Math.random() < 0.49){
+					umove = false;
+					dmove = true;
+					decideud = false;
+				}else{
+					dmove = false;
+					umove = true;
+					decideud = false;
+				}
+			}
+		}
+		
+		if(verticalcorridorClash(Game.corridorleft).equals("vertical")){
+			System.out.println("int vertical left corridor");
+			lmove = false;
+			rmove = false;
+			
+			if(decideud){
+				if(Math.random() < 0.49){
+					umove = false;
+					dmove = true;
+					decideud = false;
+				}else{
+					dmove = false;
+					umove = true;
+					decideud = false;
+				}
+			}
+		}
+	}
 	//takes care of movement of the ghost
 	public void move(boolean moving){
+		
+		decideMoveDirection();
 		
 		 if (moving == true){
 			if(benignmode){
@@ -146,6 +203,15 @@ public class GhostWithAI {
 				speed = 2;
 			}
 			
+			if(rmove){
+				x+=speed;
+			}else if(lmove){
+				x-=speed;
+			}else if(umove){
+				y-=speed;
+			}else if(dmove){
+				y+=speed;
+			}
 		}
 	}
 	//accessor methods to get info such as name, xvelo, yvelo, x, and y
@@ -192,5 +258,33 @@ public class GhostWithAI {
 			sprite=ghostBenign;
 		}
 		
+	}
+	
+	public String horizontalcorridorClash(Corridor a){
+		//checks to see if aighost is within bounds of corridor entered (a)
+		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.horizontalcorridorBottom()) && (getcx() > a.horizontalcorridorLeft() + 40) && (getcx() < a.horizontalcorridorRight() - 60)){
+			
+			//System.out.println("it is in horz");
+			return "horizontal";
+		}
+		else{
+			return "";
+		}
+	}
+	public String verticalcorridorClash(Corridor a){
+		//checks to see if pacman is within bounds of corridor entered (a)
+		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() -20) && (getcx() > a.verticalcorridorLeft() + 19) && (getcx() < a.verticalcorridorRight() - 15)){
+			return "vertical";
+		}
+		else{
+			return "";
+		}
+	}
+	
+	public int getcy(){
+		return y + (height / 2);
+	}
+	public int getcx(){
+		return x + (width / 2);
 	}
 }
