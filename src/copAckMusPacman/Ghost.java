@@ -172,9 +172,6 @@ public class Ghost {
 				}
 				break;
 			}
-			
-			
-			
 		}
 	}
 	//accessor methods to get info such as name, xvelo, yvelo, x, and y
@@ -207,10 +204,6 @@ public class Ghost {
 	 	            return true;
 	        	
 	        	}
-	        	 
-	        	 
-	        	 
-	        	
 	        	return true;
 	        }
 	        else{

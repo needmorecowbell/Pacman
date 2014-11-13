@@ -32,13 +32,14 @@ public class Game extends JPanel{
 	public HorizontalWalls bottomwall = new HorizontalWalls(0, ((160 * SCALE) - 38));
 	
 	//sets up arrays for the ghosts, deadghosts, pills, dots, corridors, and coverups
-	public static boolean ghostmove = true;
+	public static boolean ghostmove = false;
 	public static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
 	public static ArrayList<Ghost> deadghosts = new ArrayList<Ghost>();
 	public static ArrayList<Pill> pills = new ArrayList<Pill>();
 	public static ArrayList<Dots> dots = new ArrayList<Dots>();
 	public static ArrayList<Corridor> corridors = new ArrayList<Corridor>();
 	public static ArrayList<PaintOver> coverup = new ArrayList<PaintOver>();
+	public static ArrayList<GhostWithAI> aighosts = new ArrayList<GhostWithAI>();
 	
 	//data for width of the JFrame and height of the JFrame
 	public static final int WIDTH = (160 * SCALE);
@@ -70,6 +71,7 @@ public class Game extends JPanel{
 	public static Corridor corridorbottom = new Corridor(235, 417, 400, 40);//recentered corridor values
 	public static Corridor corridorleft = new Corridor(55, 227, 40, 420);
 	public static Corridor corridorright = new Corridor(415, 227, 40, 420);
+	public static Corridor corridormiddle = new Corridor(235, 188, 400, 40);
 	
 	//Constructor for the Game 
 	public Game(){
@@ -96,10 +98,11 @@ public class Game extends JPanel{
 		hasnotcollided= true;
 		
 		//adds four ghosts, each with different info, to the arraylist of ghosts 
-		ghosts.add(new Ghost("Adam M", 50,50, "pink",1,-1));
-		ghosts.add(new Ghost("Aaron", 250, 150, "teal",-1,1));
-		ghosts.add(new Ghost("Adam Ack", 50, 200, "red",1,1));
-		ghosts.add(new Ghost("Eugene Crabs", 250, 250, "orange", -1, -1));
+		ghosts.add(new Ghost("Adam M", 150, 180, "pink",1,-1));
+		ghosts.add(new Ghost("Aaron", 185, 180, "teal",-1,1));
+		//ghosts.add(new Ghost("Adam Ack", 220, 180, "red",1,1));
+		ghosts.add(new Ghost("Eugene Crabs", 255, 180, "orange", -1, -1));
+		aighosts.add(new GhostWithAI("Adam Ack", 220, 177, "red"));
 		//ghosts.add(new ReproducerGhost(40,60,"pink",1,1,2));
 		
 		//adds four pills, one in each corner, to the arraylist of pills
@@ -342,10 +345,12 @@ public class Game extends JPanel{
 		corridorbottom.paint(g2d);
 		corridorleft.paint(g2d);
 		corridorright.paint(g2d);
+		corridormiddle.paint(g2d);
 		for(int x=0;x<coverup.size();x++){coverup.get(x).paint(g2d);}
 		for(int x=0;x<dots.size();x++){dots.get(x).paint(g2d);}
 		for(int x=0;x<pills.size();x++){pills.get(x).paint(g2d);}
 		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
+		for(int x=0;x<aighosts.size();x++){aighosts.get(x).paint(g2d);}
 		ball.paint(g2d);
 	}
 
@@ -355,6 +360,11 @@ public class Game extends JPanel{
 		ball.move(direction, movelrud);
 		for(int x=0;x<ghosts.size();x++){
 			ghosts.get(x).move(ghostmove,ghosts.get(x).getxvelo(),ghosts.get(x).getyvelo());
+		}
+		
+		for(int x = 0; x < aighosts.size(); x++){
+			
+			aighosts.get(x).move(ghostmove);
 		}
 	}
 	
