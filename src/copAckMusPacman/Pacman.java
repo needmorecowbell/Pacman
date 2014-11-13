@@ -112,7 +112,7 @@ public class Pacman {
 	//40 is equal to width of corridor, so whenever 40 is used, it is adjusting for that
 	public String horizontalcorridorClash(Corridor a){
 		//checks to see if pacman is within bounds of corridor entered (a)
-		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.horizontalcorridorBottom()) && (getcx() > a.corridorLeft() + 40) && (getcx() < a.corridorRight() - 40)){
+		if((getcy() > a.horizontalcorridorTop()) && (getcy() + 15 < a.horizontalcorridorBottom()) && (getcx() > a.horizontalcorridorLeft() + 20) && (getcx() < a.horizontalcorridorRight() - 40)){
 			
 			//System.out.println("it is in horz");
 			return "horizontal";
@@ -124,7 +124,7 @@ public class Pacman {
 	
 	public String verticalcorridorClash(Corridor a){
 		//checks to see if pacman is within bounds of corridor entered (a)
-		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() -20) && (getcx() > a.corridorLeft()) && (getcx() < a.corridorRight())){
+		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() -20) && (getcx() > a.verticalcorridorLeft()) && (getcx() < a.verticalcorridorRight())){
 			return "vertical";
 		}
 		else{
@@ -134,7 +134,7 @@ public class Pacman {
 	
 	public String square1(Corridor hor, Corridor vert){
 		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
-		if (getcy() < hor.horizontalcorridorBottom()-30 && getcx() < vert.corridorRight()-30){
+		if (getcy() < hor.horizontalcorridorBottom()-30 && getcx() < vert.verticalcorridorRight()-30){
 			System.out.println("in upper left square");
 			return "upperleft";
 		}else{
@@ -142,9 +142,27 @@ public class Pacman {
 		}
 	}
 	public String square2(Corridor hor, Corridor vert){ 
-		if(getcy() > hor.horizontalcorridorTop() && getcx() < vert.corridorRight()-30){
+		if(getcy() > hor.horizontalcorridorTop() && getcx() < vert.verticalcorridorRight()-30){
 			System.out.println("in bottom left square!!!");
 			return "bottomleft";
+		}else{
+			return "";
+		}
+	}
+	public String square3(Corridor hor, Corridor vert){
+		
+		if(getcy() > hor.horizontalcorridorTop() && getcx() > vert.verticalcorridorLeft() + 30){
+			System.out.println("in bottom right corner");
+			return "bottomright";
+		}else{
+			return "";
+		}
+	}
+	public String square4(Corridor hor, Corridor vert){
+		
+		if(getcy() < hor.horizontalcorridorBottom() && getcx() > vert.verticalcorridorLeft() + 30){
+			System.out.println("in upper right corner");
+			return "upperright";
 		}else{
 			return "";
 		}

@@ -55,13 +55,23 @@ public class Corridor {
 		return (cy + (height / 2) + 16);
 	}
 	//gets location of left of corridor
-	public int corridorLeft(){
+	public int horizontalcorridorLeft(){
 		
-		return (cx - (width / 2) - 16);
+		return x + wallwidth;
 	}
 	//gets location of right of corridor
-	public int corridorRight(){
+	public int horizontalcorridorRight(){
 		
-		return (cx + (width / 2) + 16);
+		return x + width + 20;
 	}
+	
+	public int verticalcorridorRight(){
+		
+		return cx + (width / 2); //- 16;
+	}
+	public int verticalcorridorLeft(){
+		
+		return cx - (width / 2); //+ 16;
+	}
+	
 }

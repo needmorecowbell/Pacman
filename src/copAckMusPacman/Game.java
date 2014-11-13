@@ -392,6 +392,18 @@ public class Game extends JPanel{
 			value = 5;
 		}
 		
+		String square3 = ball.square3(corridorbottom, corridorright);
+		if(square3.equals("bottomright")){
+			//disable the down and right keys
+			value = 6;
+		}
+		
+		String square4 = ball.square4(corridortop, corridorright);
+		if(square4.equals("upperright")){
+			//disable the up and right keys
+			value = 7;
+		}
+		
 		//we are gonna have some trouble with right side turning
 	}
 	
@@ -404,13 +416,13 @@ public class Game extends JPanel{
         	direction = 'x';
         	movelrud = 0;
         }
-        if(k.getKeyCode()==KeyEvent.VK_RIGHT &&(value != 2)){
+        if(k.getKeyCode()==KeyEvent.VK_RIGHT &&(value != 2) && (value!=6) && (value != 7)){
         	
         	ball.spriteDirection('r');
         	direction = 'x';
         	movelrud = 1;
         }
-        if(k.getKeyCode()==KeyEvent.VK_UP && (value !=3) && (value !=1)){
+        if(k.getKeyCode()==KeyEvent.VK_UP && (value !=3) && (value !=1) &&(value !=7)){
         	
         	
         		
@@ -419,7 +431,7 @@ public class Game extends JPanel{
             	movelrud = 1;
         	
         }
-        if(k.getKeyCode()==KeyEvent.VK_DOWN && (value !=3)&&(value != 5)){
+        if(k.getKeyCode()==KeyEvent.VK_DOWN && (value !=3)&&(value != 5) && (value != 6)){
         	
             	ball.spriteDirection('d');
             	direction = 'y';
