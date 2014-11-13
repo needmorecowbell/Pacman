@@ -100,7 +100,7 @@ public class Game extends JPanel{
 		ghosts.add(new Ghost("Aaron", 250, 150, "teal",-1,1));
 		ghosts.add(new Ghost("Adam Ack", 50, 200, "red",1,1));
 		ghosts.add(new Ghost("Eugene Crabs", 250, 250, "orange", -1, -1));
-		ghosts.add(new ReproducerGhost(40,60,"pink",1,1,2));
+		//ghosts.add(new ReproducerGhost(40,60,"pink",1,1,2));
 		
 		//adds four pills, one in each corner, to the arraylist of pills
 		pills.add(new Pill(50, 410));
