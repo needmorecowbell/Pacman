@@ -355,8 +355,8 @@ public class GhostWithAI {
 	 	        	try{
 	 	        	//adds to your score, adds the ghost to the arraylist of dead ghosts, and removes it from screen
 	 	        	Game.score += 100;	
-	 	        	//Game.deadghosts.add(a);
-	 	        	//Game.ghosts.remove(a);
+	 	        	Game.deadghosts.add(a);
+	 	        	Game.aighosts.remove(a);
 	 	        	}
 	 	        	catch (IndexOutOfBoundsException e){
 	 	        		System.out.println("Index out of bounds error");

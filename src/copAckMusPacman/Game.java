@@ -1,11 +1,5 @@
 package copAckMusPacman;
 
-/*
-
-WE ARE STILL HAVING TROUBLE WITH BENIGN GHOST MODE
-
-*/
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -34,7 +28,7 @@ public class Game extends JPanel{
 	//sets up arrays for the ghosts, deadghosts, pills, dots, corridors, and coverups
 	public static boolean ghostmove = false;
 	public static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
-	public static ArrayList<Ghost> deadghosts = new ArrayList<Ghost>();
+	public static ArrayList<GhostWithAI> deadghosts = new ArrayList<GhostWithAI>();
 	public static ArrayList<Pill> pills = new ArrayList<Pill>();
 	public static ArrayList<Dots> dots = new ArrayList<Dots>();
 	public static ArrayList<Corridor> corridors = new ArrayList<Corridor>();
@@ -185,10 +179,10 @@ public class Game extends JPanel{
 			ballcollisions();
 			
 			//calls the ghostcollisions method for each of the ghosts in the ghosts array, which handles bouncing off the outside walls
-			for(int x=0;x<ghosts.size();x++){
+			/*for(int x=0;x<ghosts.size();x++){
 				ghostcollisions(ghosts.get(x), ghosts.get(x).getx(), ghosts.get(x).gety());
 			
-			}
+			}*/
 			
 			//for each of the ghosts it checks to see if the ghost has collided with pacman
 			for(int x=0;x<aighosts.size();x++){
@@ -207,8 +201,8 @@ public class Game extends JPanel{
 					pills.remove(x);
 					benignmodetimer = 0;
 					
-					for(int X = 0; X < ghosts.size(); X++){
-						ghosts.get(X).setBenignMode(true);
+					for(int X = 0; X < /*aighosts...but that creates problems*/ghosts.size(); X++){
+						aighosts.get(X).setBenignMode(true);
 					}
 				}
 			}
@@ -224,7 +218,7 @@ public class Game extends JPanel{
 			stayInCorridors();
 			
 			//if all the ghosts are eaten, it checks the dead ghosts to see if in benign mode and if so, adds 1 to the benign mode timer
-			if (ghosts.size() == 0){
+			if (aighosts.size() == 0){
 				try{
 					if(deadghosts.get(0).getBenignMode()){
 						benignmodetimer++;
@@ -236,7 +230,7 @@ public class Game extends JPanel{
 			//if they are not all eaten, it checks to see if the alive ones are in benign mode and if so, adds 1 to the benign mode timer
 			else{	
 				try{	
-					if (ghosts.get(0).getBenignMode() || deadghosts.get(0).getBenignMode()){
+					if (aighosts.get(0).getBenignMode() || deadghosts.get(0).getBenignMode()){
 						benignmodetimer++;
 					}
 				}catch (IndexOutOfBoundsException e){
@@ -248,8 +242,8 @@ public class Game extends JPanel{
 			if(benignmodetimer >= 380){
 				
 				System.out.println("FLASH");
-				for(int x=0;x<ghosts.size();x++){
-					ghosts.get(x).flash(benignmodetimer);
+				for(int x=0;x<aighosts.size();x++){
+					aighosts.get(x).flash(benignmodetimer);
 				}
 			}
 			
@@ -257,7 +251,7 @@ public class Game extends JPanel{
 			if(benignmodetimer >= 500){
 			
 				for (int x = 0; x<ghosts.size(); x++){
-					ghosts.get(x).setBenignMode(false);
+					aighosts.get(x).setBenignMode(false);
 					try{
 					deadghosts.get(x).setBenignMode(false);
 					} catch (IndexOutOfBoundsException e){
@@ -268,7 +262,7 @@ public class Game extends JPanel{
 				
 				for(int x=0; x<deadghosts.size(); x++){
 					
-					ghosts.add(deadghosts.get(x));
+					aighosts.add(deadghosts.get(x));
 					deadghosts.get(x).paintincenter();
 				}
 				

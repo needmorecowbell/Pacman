@@ -166,7 +166,7 @@ public class ReproducerGhost extends Ghost{
 	 	        	try{
 	 	        	//adds to your score, adds the ghost to the arraylist of dead ghosts, and removes it from screen
 	 	        	Game.score += 100;	
-	 	        	Game.deadghosts.add(a);
+	 	        	//Game.deadghosts.add(a);
 	 	        	Game.ghosts.remove(a);
 	 	        	}
 	 	        	catch (IndexOutOfBoundsException e){

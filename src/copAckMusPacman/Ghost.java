@@ -185,7 +185,7 @@ public class Ghost {
 	public void setyvelo(int yvelo){this.yvelo=yvelo;}
 	
 	//collisions methods between pacman and the ghost
-	public boolean collision(Pacman r, Ghost a){
+	public boolean collision(Pacman r, GhostWithAI a){
 	        double distance = Math.sqrt(((a.getx() - r.getx()) * (a.getx() - r.getx()))+ ((a.gety() - r.gety()) * (a.gety() - r.gety())));
 	        
 	        if (benignmode){
