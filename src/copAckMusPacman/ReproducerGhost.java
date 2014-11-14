@@ -183,8 +183,18 @@ public class ReproducerGhost extends Ghost{
 	        }
 	        else{
 	        if (distance <= (this.height / 2) + (r.height / 2)){
-	            Game.ghosts.add(new Ghost("reproduced", 50,50, "pink",1,-1));
-	            System.out.println("reproduced!");
+	        	if((int)(Math.random() * 100+1)>=25){
+	        		Game.ghosts.add(new Ghost("reproduced", 50,50, "pink",1,-1));
+	        		System.out.println("reproduced!");	
+	        	}else{
+	        		Game.ghosts.add(new ReproducerGhost(50,60,"teal",1,1,2));
+	        		System.out.println("Cloned!!");	
+	        	}
+	        	
+
+	            
+	            
+	            paintincenter();
 	            return true;
 	        }else{
 	            return true;

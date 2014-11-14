@@ -67,7 +67,7 @@ public class initialWindow {
 		
 		
 		while(open){
-			//System.out.println("open");
+			System.out.println("");
 			
 		}
 		System.out.println("closed");
