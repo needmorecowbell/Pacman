@@ -79,17 +79,17 @@ public class Pacman {
 		switch(dir)
 		{
 		case 'x': switch(posneg){
-		case 1: x+=2;
+		case 1: x+=1;
 		break;
-		case 0: x-=2;
+		case 0: x-=1;
 		break;
 		}
 			break;
 		case 'y': switch(posneg)
 		{
-		case 1: y-=2;
+		case 1: y-=1;
 		break;
-		case 0: y+=2;
+		case 0: y+=1;
 		break;
 		}
 			break;

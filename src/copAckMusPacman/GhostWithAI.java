@@ -294,7 +294,7 @@ public class GhostWithAI {
 				}
 			}
 		}else if(verticalcorridorClash(Game.corridorleft).equals("vertical")){
-			System.out.println("int vertical left corridor");
+			System.out.println("in vertical left corridor");
 			lmove = false;
 			rmove = false;
 			decidelr = true;
@@ -416,7 +416,7 @@ public class GhostWithAI {
 	}
 	public String upperrightSquare(Corridor hor, Corridor vert){
 		
-		if(getcy() < hor.horizontalcorridorBottom() - 15 && getcx() > vert.verticalcorridorLeft() + 18){
+		if(getcy() < hor.horizontalcorridorBottom() - 15 && getcx() > vert.verticalcorridorLeft() + 19){
 			System.out.println("in upper right corner");
 			return "upperright";
 		}else{

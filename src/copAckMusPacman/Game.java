@@ -98,12 +98,16 @@ public class Game extends JPanel{
 		hasnotcollided= true;
 		
 		//adds four ghosts, each with different info, to the arraylist of ghosts 
-		ghosts.add(new Ghost("Adam M", 150, 180, "pink",1,-1));
-		ghosts.add(new Ghost("Aaron", 185, 180, "teal",-1,1));
+		//ghosts.add(new Ghost("Adam M", 150, 180, "pink",1,-1));
+		//ghosts.add(new Ghost("Aaron", 185, 180, "teal",-1,1));
 		//ghosts.add(new Ghost("Adam Ack", 220, 180, "red",1,1));
-		ghosts.add(new Ghost("Eugene Crabs", 255, 180, "orange", -1, -1));
-		aighosts.add(new GhostWithAI("Adam Ack", 220, 177, "red"));
+		//ghosts.add(new Ghost("Eugene Crabs", 255, 180, "orange", -1, -1));
 		//ghosts.add(new ReproducerGhost(40,60,"pink",1,1,2));
+		aighosts.add(new GhostWithAI("Adam Ack", 220, 177, "red"));
+		aighosts.add(new GhostWithAI("Aaron", 218, 177, "teal"));
+		aighosts.add(new GhostWithAI("Adam M", 222, 177, "pink"));
+		aighosts.add(new GhostWithAI("Eugene Crabs", 220, 177, "orange"));
+		
 		
 		//adds four pills, one in each corner, to the arraylist of pills
 		pills.add(new Pill(50, 410));
@@ -221,8 +225,12 @@ public class Game extends JPanel{
 			
 			//if all the ghosts are eaten, it checks the dead ghosts to see if in benign mode and if so, adds 1 to the benign mode timer
 			if (ghosts.size() == 0){
-				if(deadghosts.get(0).getBenignMode()){
-					benignmodetimer++;
+				try{
+					if(deadghosts.get(0).getBenignMode()){
+						benignmodetimer++;
+					}
+				}catch(IndexOutOfBoundsException e0){
+					
 				}
 			}
 			//if they are not all eaten, it checks to see if the alive ones are in benign mode and if so, adds 1 to the benign mode timer
@@ -349,7 +357,7 @@ public class Game extends JPanel{
 		for(int x=0;x<coverup.size();x++){coverup.get(x).paint(g2d);}
 		for(int x=0;x<dots.size();x++){dots.get(x).paint(g2d);}
 		for(int x=0;x<pills.size();x++){pills.get(x).paint(g2d);}
-		for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
+		//for(int x=0;x<ghosts.size();x++){ghosts.get(x).paint(g2d);}
 		for(int x=0;x<aighosts.size();x++){aighosts.get(x).paint(g2d);}
 		ball.paint(g2d);
 	}
@@ -358,9 +366,9 @@ public class Game extends JPanel{
 	private void move(){
 		
 		ball.move(direction, movelrud);
-		for(int x=0;x<ghosts.size();x++){
-			ghosts.get(x).move(ghostmove,ghosts.get(x).getxvelo(),ghosts.get(x).getyvelo());
-		}
+		//for(int x=0;x<ghosts.size();x++){
+			//ghosts.get(x).move(ghostmove,ghosts.get(x).getxvelo(),ghosts.get(x).getyvelo());
+		//}
 		
 		for(int x = 0; x < aighosts.size(); x++){
 			
