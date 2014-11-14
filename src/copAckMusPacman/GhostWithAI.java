@@ -21,7 +21,7 @@ public class GhostWithAI {
 	BufferedImage ghost,ghostBenign,ghostBenignInvert,sprite;
 	
 	
-	boolean lmove = false, rmove = false, dmove = false, umove = false, decidelr = true, decideud = true;
+	boolean lmove = false, rmove = false, dmove = false, umove = false, decidelr = true, decideud = true, notinsquare = true;
 	
 	//constructor naming ghost, giving it location, color, and speeds
 	public GhostWithAI(String name, int x, int y, String c){
@@ -135,11 +135,92 @@ public class GhostWithAI {
 		return benignmode;
 	}
 	public void decideMoveDirection(){
-		
-		if(horizontalcorridorClash(Game.corridormiddle).equals("horizontal")){
+		if(upperleftSquare(Game.corridortop, Game.corridorleft).equals("upperleft")){
+			
+			System.out.println("in upper left square");
+			if(notinsquare){
+				if(Math.random() < 0.49){
+					lmove = false;
+					umove = false;
+					dmove = false;
+					rmove = true;
+					decideud = false;
+					notinsquare = false;
+				}else{
+					rmove = false; 
+					dmove = true;
+					umove = false;
+					lmove = false;
+					decideud = false;
+					notinsquare = false;
+				}
+			}
+		}else if(bottomrightSquare(Game.corridorbottom, Game.corridorright).equals("bottomright")){
+			
+			System.out.println("in bottom right square");
+			if(notinsquare){
+				if(Math.random() < 0.49){
+					lmove = false;
+					rmove = false;
+					dmove = false;
+					umove = true;
+					decideud = false;
+					notinsquare = false;
+				}else{
+					rmove = false;
+					dmove = false;
+					umove = false;
+					lmove = true;
+					decidelr = false;
+					notinsquare = false;
+				}
+			}
+		}else if(upperrightSquare(Game.corridortop, Game.corridorright).equals("upperright")){
+			
+			System.out.println("in upper right square");
+			if(notinsquare){
+				if(Math.random() < 0.49){
+					rmove = false;
+					umove = false;
+					lmove = false;
+					dmove = true;
+					decideud = false;
+					notinsquare = false;
+				}else{
+					rmove = false;
+					umove = false;
+					dmove = false;
+					lmove = true;
+					decidelr = false;
+					notinsquare = false;
+				}
+			}
+		}else if(bottomleftSquare(Game.corridorbottom, Game.corridorleft).equals("bottomleft")){
+			
+			System.out.println("in bottom left square");
+			if(notinsquare){
+				if(Math.random() < 0.49){
+					lmove = false;
+					rmove = false;
+					dmove = false;
+					umove = true;
+					decideud = false;
+					notinsquare = false;
+				}else{
+					rmove = true;
+					dmove = false;
+					umove = false;
+					lmove = false;
+					decidelr = false;
+					notinsquare = false;
+				}
+			}
+		}else if(horizontalcorridorClash(Game.corridormiddle).equals("horizontal")){
 			System.out.println("in horizontal middle corridor");
 			umove = false;
 			dmove = false;
+			decideud = true;
+			notinsquare = true;
 			
 			if(decidelr){
 				if(Math.random() < 0.49){
@@ -152,12 +233,66 @@ public class GhostWithAI {
 					decidelr = false;
 				}
 			}
-		}
-		
-		if(verticalcorridorClash(Game.corridorright).equals("vertical")){
+		}else if(horizontalcorridorClash(Game.corridortop).equals("horizontal")){
+			System.out.println("in horizontal top corridor");
+			umove = false;
+			dmove = false;
+			decideud = true;
+			notinsquare = true;
+			
+			if(decidelr){
+				if(Math.random() < 0.49){
+					rmove = false;
+					lmove = true;
+					decidelr = false;
+				}else{
+					lmove = false;
+					rmove = true;
+					decidelr = false;
+				}
+			}
+		}else if(horizontalcorridorClash(Game.corridorbottom).equals("horizontal")){
+			System.out.println("in horizontal bottom corridor");
+			umove = false;
+			dmove = false;
+			decideud = true;
+			notinsquare = true;
+			
+			if(decidelr){
+				if(Math.random() < 0.49){
+					rmove = false;
+					lmove = true;
+					decidelr = false;
+				}else{
+					lmove = false;
+					rmove = true;
+					decidelr = false;
+				}
+			}
+		}else if(verticalcorridorClash(Game.corridorright).equals("vertical")){
 			System.out.println("in vertical right corridor");
 			lmove = false;
 			rmove = false;
+			decidelr = true;
+			notinsquare = true;
+			
+			if(decideud){
+				if(Math.random() < 0.49){
+					umove = false;
+					dmove = true;
+					decideud = false;
+				}else{
+					dmove = false;
+					umove = true;
+					decideud = false;
+				}
+			}
+		}else if(verticalcorridorClash(Game.corridorleft).equals("vertical")){
+			System.out.println("int vertical left corridor");
+			lmove = false;
+			rmove = false;
+			decidelr = true;
+			notinsquare = true;
 			
 			if(decideud){
 				if(Math.random() < 0.49){
@@ -172,23 +307,7 @@ public class GhostWithAI {
 			}
 		}
 		
-		if(verticalcorridorClash(Game.corridorleft).equals("vertical")){
-			System.out.println("int vertical left corridor");
-			lmove = false;
-			rmove = false;
-			
-			if(decideud){
-				if(Math.random() < 0.49){
-					umove = false;
-					dmove = true;
-					decideud = false;
-				}else{
-					dmove = false;
-					umove = true;
-					decideud = false;
-				}
-			}
-		}
+		
 	}
 	//takes care of movement of the ghost
 	public void move(boolean moving){
@@ -273,13 +392,49 @@ public class GhostWithAI {
 	}
 	public String verticalcorridorClash(Corridor a){
 		//checks to see if pacman is within bounds of corridor entered (a)
-		if((getcy() > a.verticalcorridorTop() +40) && (getcy() + 15 < a.verticalcorridorBottom() -20) && (getcx() > a.verticalcorridorLeft() + 19) && (getcx() < a.verticalcorridorRight() - 15)){
+		if((getcy() > a.verticalcorridorTop() + 40) && (getcy() + 15 < a.verticalcorridorBottom() -20) && (getcx() > a.verticalcorridorLeft() + 19) && (getcx() < a.verticalcorridorRight() - 15)){
 			return "vertical";
 		}
 		else{
 			return "";
 		}
 	}
+	public String bottomrightSquare(Corridor hor, Corridor vert){
+			
+		if(getcy() > hor.horizontalcorridorTop() && getcx() > vert.verticalcorridorLeft() + 18){
+			System.out.println("in bottom right corner");
+			return "bottomright";
+		}else{
+			return "";
+		}
+	}
+	public String upperrightSquare(Corridor hor, Corridor vert){
+		
+		if(getcy() < hor.horizontalcorridorBottom() - 15 && getcx() > vert.verticalcorridorLeft() + 18){
+			System.out.println("in upper right corner");
+			return "upperright";
+		}else{
+			return "";
+		}
+	}
+	public String bottomleftSquare(Corridor hor, Corridor vert){ 
+		if(getcy() > hor.horizontalcorridorTop() && getcx() < vert.verticalcorridorRight() - 14){
+			System.out.println("in bottom left square!!!");
+			return "bottomleft";
+		}else{
+			return "";
+		}
+	}
+	public String upperleftSquare(Corridor hor, Corridor vert){
+		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
+		if (getcy() < hor.horizontalcorridorBottom() - 14 && getcx() < vert.verticalcorridorRight() - 14){
+			System.out.println("in upper left square");
+			return "upperleft";
+		}else{
+			return "";
+		}
+	}
+
 	
 	public int getcy(){
 		return y + (height / 2);
