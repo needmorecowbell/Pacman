@@ -12,6 +12,7 @@ public class Pacman {
 	int width = 30, height = 30;//Radius = 15
 	int x = 220, y = 24;//positions pacman in corridor at start
 	private int cx = 0, cy = 0;
+	char dir;
 	
 	BufferedImage pacmanRight,pacmanLeft,pacmanDown,pacmanUp, sprite;
 	public Pacman(){
@@ -32,7 +33,7 @@ public class Pacman {
 	}
 	
 	public void spriteDirection(char dir){
-		
+		this.dir = dir;
 		switch(dir)
 		{
 		case 'l': sprite = pacmanLeft;
@@ -49,6 +50,9 @@ public class Pacman {
 	
 	public void paint(Graphics g){
 		g.drawImage(sprite, x, y, null);
+		//g.setColor(Color.blue);
+		//g.fillRect(Game.corridorleft.verticalcorridorRight()-35, Game.corridorbottom.horizontalcorridorTop() - 19, 40, 40);
+		
 	}
 	
 	public int getx(){
@@ -71,6 +75,10 @@ public class Pacman {
 		
 		cx = x + (height / 2);
 		return cx;
+	}
+	
+	public char getSpriteDirection(){
+		return dir;
 	}
 	
 	public void move(char dir, int posneg){
@@ -134,7 +142,7 @@ public class Pacman {
 	
 	public String square1(Corridor hor, Corridor vert){
 		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
-		if (getcy() < hor.horizontalcorridorBottom()-30 && getcx() < vert.verticalcorridorRight()-30){
+		if (getcy() < hor.horizontalcorridorBottom() - 16 && getcx() < vert.verticalcorridorRight() - 16){
 			System.out.println("in upper left square");
 			return "upperleft";
 		}else{
@@ -142,7 +150,7 @@ public class Pacman {
 		}
 	}
 	public String square2(Corridor hor, Corridor vert){ 
-		if(getcy() > hor.horizontalcorridorTop() && getcx() < vert.verticalcorridorRight()-30){
+		if(getcy() > hor.horizontalcorridorTop() + 1 && getcx() < vert.verticalcorridorRight()-16){
 			System.out.println("in bottom left square!!!");
 			return "bottomleft";
 		}else{

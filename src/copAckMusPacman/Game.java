@@ -400,28 +400,41 @@ public class Game extends JPanel{
 		String square1 = ball.square1(corridortop, corridorleft);
 		if(square1.equals("upperleft")){
 			//disable the left and up keys: only allow the right and down keys to work
+			System.out.println("UPPER LEFT ACK");
+			if(ball.getSpriteDirection() == 'u' || ball.getSpriteDirection() == 'l'){
+				
+				direction = 'b';
+			}
 			value = 1;
 		}
 		
 		String square2 = ball.square2(corridorbottom, corridorleft);
 		if(square2.equals("bottomleft")){
 			//disable the down and left keys
+			if(ball.getSpriteDirection() == 'd' || ball.getSpriteDirection() == 'l'){
+				direction = 'b';
+			}
 			value = 5;
 		}
 		
 		String square3 = ball.square3(corridorbottom, corridorright);
 		if(square3.equals("bottomright")){
 			//disable the down and right keys
+			if(ball.getSpriteDirection() == 'r' || ball.getSpriteDirection() == 'd'){
+				direction = 'b';
+			}
 			value = 6;
 		}
 		
 		String square4 = ball.square4(corridortop, corridorright);
 		if(square4.equals("upperright")){
 			//disable the up and right keys
+			if(ball.getSpriteDirection() == 'r' || ball.getSpriteDirection() == 'u'){
+				direction = 'b';
+			}
 			value = 7;
 		}
 		
-		//we are gonna have some trouble with right side turning
 	}
 	
 	//key pressed method handles what happens for each keypress(left, right, up, down)
