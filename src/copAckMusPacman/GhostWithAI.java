@@ -433,7 +433,7 @@ public class GhostWithAI {
 	}
 	public String upperleftSquare(Corridor hor, Corridor vert){
 		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
-		if (getcy() < hor.horizontalcorridorBottom() - 14 && getcx() < vert.verticalcorridorRight() - 14){
+		if (getcy() < hor.horizontalcorridorBottom() - 15 && getcx() < vert.verticalcorridorRight() - 14){
 			System.out.println("in upper left square");
 			return "upperleft";
 		}else{
