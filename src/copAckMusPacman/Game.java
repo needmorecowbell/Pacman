@@ -191,8 +191,8 @@ public class Game extends JPanel{
 			}
 			
 			//for each of the ghosts it checks to see if the ghost has collided with pacman
-			for(int x=0;x<ghosts.size();x++){
-				hasnotcollided=ghosts.get(x).collision(ball, ghosts.get(x));		
+			for(int x=0;x<aighosts.size();x++){
+				hasnotcollided=aighosts.get(x).collision(ball, aighosts.get(x));		
 				if(hasnotcollided==false){break;}
 			}	
 			

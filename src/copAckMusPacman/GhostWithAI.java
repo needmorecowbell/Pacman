@@ -143,7 +143,7 @@ public class GhostWithAI {
 		 */
 		if(upperleftSquare(Game.corridortop, Game.corridorleft).equals("upperleft")){
 			
-			System.out.println("in upper left square");
+			//System.out.println("in upper left square");
 			if(notinsquare){
 				if(Math.random() < 0.49){
 					lmove = false;
@@ -163,7 +163,7 @@ public class GhostWithAI {
 			}
 		}else if(bottomrightSquare(Game.corridorbottom, Game.corridorright).equals("bottomright")){
 			
-			System.out.println("in bottom right square");
+			//System.out.println("in bottom right square");
 			if(notinsquare){
 				if(Math.random() < 0.49){
 					lmove = false;
@@ -183,7 +183,7 @@ public class GhostWithAI {
 			}
 		}else if(upperrightSquare(Game.corridortop, Game.corridorright).equals("upperright")){
 			
-			System.out.println("in upper right square");
+			//System.out.println("in upper right square");
 			if(notinsquare){
 				if(Math.random() < 0.49){
 					rmove = false;
@@ -203,7 +203,7 @@ public class GhostWithAI {
 			}
 		}else if(bottomleftSquare(Game.corridorbottom, Game.corridorleft).equals("bottomleft")){
 			
-			System.out.println("in bottom left square");
+			//System.out.println("in bottom left square");
 			if(notinsquare){
 				if(Math.random() < 0.49){
 					lmove = false;
@@ -222,7 +222,7 @@ public class GhostWithAI {
 				}
 			}
 		}else if(horizontalcorridorClash(Game.corridormiddle).equals("horizontal")){
-			System.out.println("in horizontal middle corridor");
+			//System.out.println("in horizontal middle corridor");
 			umove = false;
 			dmove = false;
 			decideud = true;
@@ -240,7 +240,7 @@ public class GhostWithAI {
 				}
 			}
 		}else if(horizontalcorridorClash(Game.corridortop).equals("horizontal")){
-			System.out.println("in horizontal top corridor");
+			//System.out.println("in horizontal top corridor");
 			umove = false;
 			dmove = false;
 			decideud = true;
@@ -258,7 +258,7 @@ public class GhostWithAI {
 				}
 			}
 		}else if(horizontalcorridorClash(Game.corridorbottom).equals("horizontal")){
-			System.out.println("in horizontal bottom corridor");
+			//System.out.println("in horizontal bottom corridor");
 			umove = false;
 			dmove = false;
 			decideud = true;
@@ -276,7 +276,7 @@ public class GhostWithAI {
 				}
 			}
 		}else if(verticalcorridorClash(Game.corridorright).equals("vertical")){
-			System.out.println("in vertical right corridor");
+			//System.out.println("in vertical right corridor");
 			lmove = false;
 			rmove = false;
 			decidelr = true;
@@ -294,7 +294,7 @@ public class GhostWithAI {
 				}
 			}
 		}else if(verticalcorridorClash(Game.corridorleft).equals("vertical")){
-			System.out.println("in vertical left corridor");
+			//System.out.println("in vertical left corridor");
 			lmove = false;
 			rmove = false;
 			decidelr = true;
@@ -345,7 +345,7 @@ public class GhostWithAI {
 	public int gety(){return y;}
 	
 	//collisions methods between pacman and the ghost
-	public boolean collision(Pacman r, Ghost a){
+	public boolean collision(Pacman r, GhostWithAI a){
 	        double distance = Math.sqrt(((a.getx() - r.getx()) * (a.getx() - r.getx()))+ ((a.gety() - r.gety()) * (a.gety() - r.gety())));
 	        
 	        if (benignmode){
@@ -355,8 +355,8 @@ public class GhostWithAI {
 	 	        	try{
 	 	        	//adds to your score, adds the ghost to the arraylist of dead ghosts, and removes it from screen
 	 	        	Game.score += 100;	
-	 	        	Game.deadghosts.add(a);
-	 	        	Game.ghosts.remove(a);
+	 	        	//Game.deadghosts.add(a);
+	 	        	//Game.ghosts.remove(a);
 	 	        	}
 	 	        	catch (IndexOutOfBoundsException e){
 	 	        		System.out.println("Index out of bounds error");
@@ -408,7 +408,7 @@ public class GhostWithAI {
 	public String bottomrightSquare(Corridor hor, Corridor vert){
 			
 		if(getcy() > hor.horizontalcorridorTop() && getcx() > vert.verticalcorridorLeft() + 18){
-			System.out.println("in bottom right corner");
+			//System.out.println("in bottom right corner");
 			return "bottomright";
 		}else{
 			return "";
@@ -417,7 +417,7 @@ public class GhostWithAI {
 	public String upperrightSquare(Corridor hor, Corridor vert){
 		
 		if(getcy() < hor.horizontalcorridorBottom() - 15 && getcx() > vert.verticalcorridorLeft() + 19){
-			System.out.println("in upper right corner");
+			//System.out.println("in upper right corner");
 			return "upperright";
 		}else{
 			return "";
@@ -425,7 +425,7 @@ public class GhostWithAI {
 	}
 	public String bottomleftSquare(Corridor hor, Corridor vert){ 
 		if(getcy() > hor.horizontalcorridorTop() && getcx() < vert.verticalcorridorRight() - 14){
-			System.out.println("in bottom left square!!!");
+			//System.out.println("in bottom left square!!!");
 			return "bottomleft";
 		}else{
 			return "";
@@ -434,7 +434,7 @@ public class GhostWithAI {
 	public String upperleftSquare(Corridor hor, Corridor vert){
 		//checks to see if pacman is within bounds of square entered (crosssection between 2 corridors)
 		if (getcy() < hor.horizontalcorridorBottom() - 15 && getcx() < vert.verticalcorridorRight() - 14){
-			System.out.println("in upper left square");
+			//System.out.println("in upper left square");
 			return "upperleft";
 		}else{
 			return "";
