@@ -135,6 +135,12 @@ public class GhostWithAI {
 		return benignmode;
 	}
 	public void decideMoveDirection(){
+		
+		/* this decision method can easily be changed such that the ghost can turn up 80% of the time if pac
+		 * is above the ghost.  you would simply compare the y's and x's of the ghost and pacman and have it turn in the direction
+		 * that brings it closer to pacman.
+		 * You would only want it to turn towards pacman 70-80% of the time because otherwise they would catch you every time...
+		 */
 		if(upperleftSquare(Game.corridortop, Game.corridorleft).equals("upperleft")){
 			
 			System.out.println("in upper left square");
